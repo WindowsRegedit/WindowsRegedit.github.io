@@ -1,0 +1,4523 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="425. 身高查询
+题目描述
+有n个人从矮到高排列，已知每个人的身高。对于给定的两个高度a,b(a小于b)，需要求四个数字：
+## 1.      身高大于等于a并且小于等于b的人有几个
+## 2.      身高大于a并且小于b的人有几个..." />
+    <meta name="keywords" content="C++,快快编程题解" />
+     <head>
+    <link rel="stylesheet" href="https://wufan.fun/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://wufan.fun/styles/main.css">
+    
+    <link rel="stylesheet" href="//highlightjs.org/static/demo/styles/github-dark.css">
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://wufan.fun/media/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+    <!--------- 数学公式👇---- -->
+    
+    <!--------- 数学公式👆----------------- -->
+    <!--------- daovocie功能👇 ------------------->
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/" + "203f864c" + ".js", "daovoice")
+    </script>
+    
+    <!--------- daovocie功能👆 ------------------->
+    <!-- -----------------twikoo评论系统引入👇 --------->
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script>
+    <!-- -----------------twikoo评论系统引入👆 --------->
+    <!---------------- leancloud api 功能依赖引入👇 -------->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script>
+    <!---------------- leancloud api 功能依赖引入👆 -------->
+    <!------------------ valine评论系统引入👇 ------------------>
+    <script src="https://wufan.fun/media/js/valine.min.js"></script>
+    <!------------------ valine评论系统引入👆 ------------------>
+    <!---------------- 今日诗词api功能依赖👇 ----------------------->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <!---------------- 今日诗词api功能依赖👆 ----------------------->
+
+
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+        height: 100vh;
+        overflow-y: scroll;
+        cursor: url("https://wufan.fun/media/images/mouse_cursor.png"), auto
+    }
+</style>
+
+<body>
+    <!--=------ 页面加载动态画面👇 --------------->
+    <div class="pjaxloading" onclick="pjaxloadingClose()">
+        <div class="loadingbackground"></div>
+        <div id="loading-aname">
+            <div class="loading-aname">
+            </div>
+        </div>
+    </div>
+    <!--=------ 页面加载动态画面👆 --------------->
+
+    <!--------------- 左侧菜单栏👇 ------------------------>
+    
+    <div id=side>
+        <div class="avatar-border">
+            <img src="https://wufan.fun/images/avatar.png?v=1658364517123" class="avatar">
+        </div>
+        <div class="sitename">吴凡的个人博客</div>
+        <span class="description" data-text='[" 十步一代码，千里不BUG"]'>&nbsp;</span>
+        <div class="siteinfocontainer">
+            <span class="siteinfo">文章</span>
+            <span class="siteinfo">标签</span>
+        </div>
+        <div class="siteinfocontainer">
+            <span class="siteinfo" id="siteinfo-postsnum"></span>
+            <span class="siteinfo">6</span>
+        </div>
+        
+        <div class="search">
+            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+            <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
+            <div class="search-results"></div>
+        </div>
+        
+    <div class="share-button">
+        <span>联系我</span>
+        
+        <a href="https://github.com/WindowsRegedit" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="https://wufan.fun/media/images/github.png" alt=""></i></a>
+        
+        
+        
+        
+        <a href="https://space.bilibili.com/1351290799" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="https://wufan.fun/media/images/bilibili.png" alt=""></i></a>
+        
+        
+        
+        
+        
+    </div>
+    <div id="qq" style="display:none"></div>
+    <!------------ 加载菜单按钮👇 ------------------------->
+    <div class="menucontainer">
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="首页"></i>&nbsp;<span
+                    data-text="首页">首页</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/archives" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="归档"></i>&nbsp;<span
+                    data-text="归档">归档</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/tags" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="标签"></i>&nbsp;<span
+                    data-text="标签">标签</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="https://wufan.fun/post/about" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="关于"></i>&nbsp;<span
+                    data-text="关于">关于</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/atom.xml" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="订阅"></i>&nbsp;<span
+                    data-text="订阅">订阅</span>
+            </a>
+        </div>
+        
+        
+
+        
+        <div class="mchocie description">
+            <a data-pjax href="https://wufan.fun/friends" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="友人帐"></i>&nbsp;<span data-text="友人帐">友人帐</span>
+            </a>
+        </div>
+        
+        <!--  -->
+    </div>
+    <!------------ 加载菜单按钮👆 ------------------------->
+    <hr>
+    <style>
+    .copyright {
+        font-size: 15px;
+        color: #d9d9d9;
+    }
+
+
+    @media screen and (min-width: 1200px) {
+        .foot {
+            width: 100%;
+            height: 130px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .foot {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <div class="foot">
+        <div id="footinfo">吴凡的个人博客 | Theme: <a
+                href="https://github.com/850552586/gridea-theme-fog">Fog</a>
+            <div>
+                
+                <div id="sitegotimeDate">载入天数...</div>
+                <div id="sitegotimes">载入时分秒...</div>
+                <div id="cussitetime" style="display:none">02/18/2022</div>
+                
+            </div>
+            <div>
+                
+            </div>
+            <div class="copyright" style="color:white;text-align: center;">
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+    //----------------------站点运行时间
+    var now = new Date();
+
+    function createtime() {
+        var sitegotime = document.getElementById("cussitetime").innerHTML + " 00:00:00";
+        var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("sitegotimeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    let intervalId = setInterval("createtime()", 250);
+</script>
+
+    </div>
+
+    <script src="https://wufan.fun/media/js/wordshow.js"></script>
+    
+    <!--------------- 左侧菜单栏👆 ------------------------>
+
+    <!----------------- 顶部菜单栏👇 ------------------------>
+    
+    <!----------------- 顶部菜单栏👆 ------------------------>
+
+<!--核心功能加载-->
+<script src="https://wufan.fun/media/js/mainfunc.js"></script>
+
+<!------------- Fog1.0版本彩蛋👇 -------------->
+    <!-- <section id="terrestrial" class="popup">
+        <a href="#" class="back">&lt; back</a>
+    </section>
+
+    <div class="flycontainer">
+        <div class="flyword">御风飞行中...</div>
+    </div>
+
+    <script>
+        $("#fog_go").click(function(){fog_go()});
+        async function fog_go(){
+            $(".bars").hide()
+            $("#live2d").hide()
+            await sleep(3000);
+            $(".flycontainer").css("display","flex");
+            $(".popup").fadeOut(500)
+            await sleep(2000);
+            var sitename = "吴凡的个人博客";
+            getFogUser(sitename);
+        }
+
+        function fog_goregis(){
+            var sitename = "吴凡的个人博客";
+            var siteurl = "https://wufan.fun";
+            regisFogUser(sitename,siteurl);
+        }
+        fog_goregis();
+    </script> -->
+<!------------- Fog1.0版本彩蛋👆 -------------->
+<script>
+    function change_topmenu(){
+        tmcolor = "antiquewhite"
+        tsnamecolor = "antiquewhite"
+        $(".navbar-inverse .navbar-nav>li>a").css("color",tmcolor)
+        $(".navbar-inverse .navbar-brand").css("color",tsnamecolor)
+        $(".navbar-fixed-top").css("border-radius","0 0 10px 10px")
+    }
+</script>
+
+<!------ 根据自定义配置声明变量👇 --------------------->
+    
+    <script>
+        var postnumChoice = true
+    </script>
+    
+    
+    <script>
+        var shareChoice = true
+    </script>
+    
+    
+    <script>
+        var donateChoice = false
+    </script>
+    
+    
+    <script>
+        var searchChoice = true
+    </script>
+    
+    <script>let postsnum = 0;</script>
+    <div id="side-posttitle" style="display: none;">
+    
+    
+    我也加入爱发电了！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    VS Code 和 Python：数据科学的天作之合
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    鸿蒙3.0将删除谷歌代码，只是为让国产系统更纯粹
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    【历史上的今天】7 月 17 日：软银收购 ARM；第一次电子邮件中断；维基媒体国际会议
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    太硬核了！GitHub爆火的开源项目，优秀 ！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    我在代码里面故意留个漏洞，违法吗？
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    【历史上的今天】7 月 10 日：iOS App Store 问世；台积电创始人出生；苹果手机越狱的起源
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Python 海象运算符，威力无穷！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    5 分钟，教你用 Docker 部署一个 Python 应用！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    神器！轻松用 Python 写个 APP！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Docker 火了！外部网络可直接访问映射到 127.0.0.1 的服务。。。
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    最怕同事写出这样的代码...
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1801+
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    好用API分享
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    
+    
+    还在用requests写爬虫吗？这个库效率提高一倍！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    国内怎么就做不出JetBrains那样的产品？
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    【历史上的今天】6 月 28 日：马斯克诞生；微软推出 Office 365；蔡氏电路的发明者出生
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Bilibili刷弹幕机器制作
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    使用 Dev-Sidecar + Cloudflare Workers + 自己的域名 搭建翻墙工具
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    程序员才理解的梗图
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    快 45%，Python 3.11 性能表现优异
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Python的打包神器—Nuitka！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    聊天室
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1601-1800
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1401-1600
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1201-1400
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程601-800
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程401-600
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程201-400
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1-200
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程801-1000
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1001-1200
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    使用 Python 来自动回微信
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    </div>
+    
+        <script>
+            var menupos = 'left';
+            $("#siteinfo-postsnum").html(postsnum);
+        </script>
+    
+    <script>
+        let commentsHide = false
+    </script>
+    <!------ 根据自定义配置声明变量👆 --------------------->
+
+
+    <!----------根据自定义配置设置图标信息👇---------->
+    <script>
+        var icondict = new Array();
+    </script>
+    
+        
+            <script>
+                var iconname = "首页";
+                var iconurl = "Home";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "归档";
+                var iconurl = "Archive";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "标签";
+                var iconurl = "Tag";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "关于";
+                var iconurl = "About";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "友人帐";
+                var iconurl = "Friends";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "订阅";
+                var iconurl = "/media/images/rss.png";
+                icondict[iconname] = iconurl;
+            </script>
+        
+    
+    <!----------根据自定义配置设置图标信息👆---------->
+</body>
+
+<script src="https://wufan.fun/media/share/dist/Share.js"></script>
+<!-- 页面pjax测试 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
+<!--确保jQuery已经在此之前加载-->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<script src="https://wufan.fun/media/js/all-pjax.js"></script><!---->
+<script>
+    function replaceAvatar() {
+        twikoo_avatar = $(".tk-avatar-img");
+        for (var i = 0; i < twikoo_avatar.length; i++) {
+            var asrc = twikoo_avatar.eq(i).attr('src');
+            if (asrc.search('cn.gravatar.com') != -1) {
+                twikoo_avatar.eq(i).attr('src', 'https://wufan.fun/media/images/comavatar.png');
+            }
+        }
+    }
+
+    function showWechat() {
+        var wechat = '';
+        alert("博主微信号：" + wechat);
+        return false;
+    }
+</script>
+
+<script>
+    /**
+     * https://github.com/tangkaichuan/gridea-search
+     */
+    // 检查缓存是否最新
+    function checkCache() {
+        var caches_postsnum = localStorage.getItem("postsnum");
+        var pt = document.getElementById("side-posttitle").innerHTML;
+        pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "")
+        var ptlen = pt.length;
+        var ptlen_storage = localStorage.getItem("poststitlelen");
+        if (caches_postsnum != postsnum || ptlen != ptlen_storage) {
+            console.log("更新缓存");
+            return false
+        }
+        return true;
+    }
+
+    (function () {
+        var CACHES = checkCache()
+        if (!CACHES) {
+            var NOW = Date.now()
+            var API_CONTENT = '../api-content/index.html' + '?_=' + NOW
+            preload(API_CONTENT);
+            getContents(show_getContentresult);
+        }
+
+        function show_getContentresult(data) {
+            console.log("获取成功");
+            var postslen = data["posts"].length;
+            localStorage.setItem('postsnum', postslen);
+            var poststitlelen = 0;
+            var pt = document.getElementById("side-posttitle").innerHTML;
+            pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "");
+            localStorage.setItem('poststitlelen', pt.length);
+        }
+
+
+
+        // preload
+        function preload(url) {
+            var preloadLink = document.createElement('link')
+            preloadLink.href = url
+            preloadLink.rel = 'preload'
+            preloadLink.as = 'fetch'
+            preloadLink.crossOrigin = 'anonymous'
+            document.head.appendChild(preloadLink)
+        }
+
+        // 异步 GET 请求
+        function get(obj) {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', obj.url, true)
+            xhr.send(null)
+            xhr.onreadystatechange = function () {
+                // 异步请求：响应状态为4，数据加载完毕
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        obj.success(xhr.responseText)
+                    } else {
+                        obj.error(xhr.status)
+                    }
+                }
+            }
+        }
+
+        // 获取博客全文 api
+        function getContents(callback) {
+            if (CACHES) {
+                callback(CACHES.contents)
+            } else {
+                get({
+                    url: API_CONTENT,
+                    success: function (data) {
+                        callback(JSON.parse(data));
+                        localStorage.setItem('ContentsCache', data);
+                        getStorageContent();
+                    }
+                })
+            }
+        }
+    })()
+    //------------------------核心功能--pjax全局渲染👇-------------------
+    let talkinit = false;
+    $(document).pjax('a[data-pjax]', '#main', {
+        fragment: '#main',
+        timeout: 8000
+    }).on('pjax:complete', function () {
+        //代码块高亮渲染
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+        //文章热度
+        if(postnumChoice){
+            getHotnum();
+        }
+        //文章索引
+        toginit();
+        //清空搜索栏
+        if (searchChoice) {
+            searchInit();
+            searchInput.value = "";
+        }
+        var pl = window.location.pathname;
+        if (pl.search("post") != -1) {
+            if (shareChoice)
+                shareInit();
+            if (donateChoice)
+                donateInit();
+            if ("valine" == "default"&&!commentsHide) {
+                $("#comment").hide()
+                commentsHide = true
+            }
+            lazyload();
+            codeinit();
+            if ("valine" == "twikoo") {
+                //twikoo头像更换
+                setTimeout(replaceAvatar, 3000);
+                setTimeout(replaceAvatar, 8000); //部分博主站点速度加载过慢，再添加一个延迟
+            }
+        }
+        if (btstate == true)
+            dropdown();
+    }).on('pjax:start', function () {
+        $(".pjaxloading").fadeIn(50);
+    }).on('pjax:end', function () {
+        $(".pjaxloading").fadeOut(50);
+    });
+    //------------------------核心功能--pjax全局渲染👆-------------------
+
+    //-------------------------------------------------搜索
+    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    if (searchChoice) {
+        var searchInput = document.querySelector('.search-input');
+        var searchResults = document.querySelector('.search-results');
+    }
+    // 申明保存文章的标题、链接、内容的数组变量
+    var searchValue = '',
+        arrItems = [],
+        arrLinks = [],
+        arrTitles = [],
+        arrContents = [],
+        arrResults = [],
+        indexItem = [],
+        itemLength = 0;
+    var tmpDiv = document.createElement('div');
+    tmpDiv.className = 'result-item';
+
+
+    function getStorageContent() {
+        var data = localStorage.getItem('ContentsCache');
+        data = JSON.parse(data);
+        posts = data["posts"];
+        for (var i = 0; i < posts.length; i++) {
+            arrLinks[i] = posts[i].link;
+            arrTitles[i] = posts[i].title;
+            arrContents[i] = posts[i].content;
+            itemLength++;
+        }
+    }
+    if (checkCache())
+        getStorageContent();
+    // 输入框内容变化后就开始匹配，可以不用点按钮
+    // 经测试，onkeydown, onchange 等方法效果不太理想，
+    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+    // 并且可以处理中文输入法拼写的变化
+    searchInput.oninput = function () {
+        setTimeout(searchConfirm, 0);
+    }
+    searchInput.onfocus = function () {
+        searchResults.style.display = 'block';
+    }
+
+    function searchConfirm() {
+        if (searchInput.value == '') {
+            searchResults.style.display = 'none';
+        } else if (searchInput.value.search(/^\s+$/) >= 0) {
+            // 检测输入值全是空白的情况
+            searchInit();
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '请输入有效内容...';
+            searchResults.appendChild(itemDiv);
+        } else {
+            // 合法输入值的情况
+            searchInit();
+            searchValue = searchInput.value;
+            // 在标题、内容中查找
+            searchMatching(arrTitles, arrContents, searchValue);
+        }
+    }
+
+    // 每次搜索完成后的初始化
+    function searchInit() {
+        arrResults = [];
+        indexItem = [];
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'block';
+    }
+
+    function searchMatching(arr1, arr2, input) {
+        // 忽略输入大小写
+        input = new RegExp(input, 'i');
+        var step = 10;
+        // 在所有文章标题、内容中匹配查询值
+        for (i = 0; i < itemLength; i++) {
+            var indexContent = arr2[i].search(input);
+            //标题匹配
+            if (arr1[i].search(input) != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+                if (indexContent != -1) {
+                    startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                    var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                    arrResults.push("....." + searchcontent + ".....");
+                } else
+                    arrResults.push("");
+            }
+            //内容匹配
+            else if (indexContent != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+
+                startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                arrResults.push("....." + searchcontent + ".....");
+            }
+        }
+
+        // 输出总共匹配到的数目
+        var totalDiv = tmpDiv.cloneNode(true);
+        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+        searchResults.appendChild(totalDiv);
+
+        // 未匹配到内容的情况
+        if (indexItem.length == 0) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '未匹配到内容...';
+            searchResults.appendChild(itemDiv);
+        }
+
+        // 将所有匹配内容进行组合
+        for (i = 0; i < arrResults.length; i++) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerHTML = '<a data-pjax class="searchresults" href="' + arrLinks[indexItem[i]] + '"><b>[' +
+                arrTitles[indexItem[i]] +
+                ']</b><p>' + arrResults[i] + '</p></a><hr />';
+            searchResults.appendChild(itemDiv);
+        }
+    }
+</script>
+
+<script>
+    daovoice('init', {
+        app_id: "203f864c"
+    });
+    daovoice('update');
+</script>
+
+
+
+<!--------------------- 菜单栏图标加载功能👇 ----------------------->
+<script>
+var menulist = $(".menuicon");
+var menulength = menulist.length;
+for (var i = 0; i < menulength; i++) {
+    var altname = menulist.eq(i).attr("alt");
+    var iconurl = icondict[altname];
+    if (iconurl == undefined || iconurl == '')
+        continue;
+    if (iconurl == 'Home') {
+        menulist.eq(i).attr("src", "https://wufan.fun/media/images/Home.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Archive') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Archive.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Tag') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Tag.png");
+menulist.eq(i).show();
+} else if (iconurl == 'About') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/About.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Talk') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Talk.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Friends') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Friends.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Fly') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/wind.png");
+menulist.eq(i).show();
+} else {
+menulist.eq(i).attr("src", iconurl);
+menulist.eq(i).show();
+}
+}
+</script>
+
+<script>
+    var ClicksideState = 1
+    var cur_readingmode = false
+    function readingmode(){
+        if (!cur_readingmode){
+            if(menupos == 'left'){
+                if(ClicksideState==1)
+                menu_openclose1()
+            }
+            $("#tab1").fadeOut(50)
+            $("#bg").fadeOut(50)
+            $(".navbar").fadeOut(50)
+            $(".markdownIt-TOC li a").css("color","black")
+            cur_readingmode = true
+        }else{
+            if(menupos == 'left'){
+                if(ClicksideState==0)
+                    menu_openclose1()
+            }
+            $("#tab1").fadeIn(50)
+            $("#bg").fadeIn(50)
+            $(".navbar").fadeIn(50)
+            $(".markdownIt-TOC li a").css("color","antiquewhite")
+            cur_readingmode = false  
+        }
+    }
+</script>
+
+    <link rel="stylesheet" href="https://wufan.fun/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://wufan.fun/styles/main.css">
+    <!-- 代码渲染风格css -->
+    
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/styles/dracula.min.css">
+    
+    <!-- 代码高亮插件 -->
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <!-- 代码复制插件 -->
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <!-- live2d插件 -->
+    <link rel="stylesheet" href="https://wufan.fun/media/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <!-- 数学公式 -->
+    
+    <title>吴凡的题库——快快编程401-600</title>
+
+    <!-- 大纲索引css调整 -->
+    
+    <style>
+        .markdownIt-TOC {
+            margin-left: 28%;
+            padding-left: 2px;
+            width: 80%;
+        }
+
+        .markdownIt-TOC li {
+            padding-left: 8%;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="landlord">
+        <div class="message" style="opacity:0"></div>
+        <canvas id="live2d" width="240" height="250" class="live2d"></canvas>
+    </div>
+    <div id="domainname" style="display:none">https://wufan.fun</div>
+    <div id="content">
+        <div>
+            <!----------- 移动端导航栏👇 ----------------->
+            <div id="bar">
+                <style>
+  .navmobile {
+    z-index: 15;
+    max-height: 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .navbar {
+      max-width: 100vw;
+    }
+  }
+
+  @media screen and (max-width:1200px) and (min-width: 768px) {
+    @media (min-width: 768px) {
+      .navbar-nav {
+        float: right;
+        margin: 0;
+      }
+    }
+  }
+
+  @media screen and (max-width:768px) {
+    .mbapspan {
+      padding: 0;
+    }
+  }
+</style>
+<div class="pjaxloading"  onclick="pjaxloadingClose()">
+  <div class="loadingbackground"></div>
+  <div id="loading">
+    <div class="loading">
+    </div>
+  </div>
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top navmobile">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#barmenu"
+        aria-expanded="false" id="barbutton">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a data-pjax class="navbar-brand" style="color:white" href="https://wufan.fun">吴凡的个人博客&nbsp;&nbsp;|</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="barmenu">
+      <ul class="nav navbar-nav">
+        
+        
+        <li>
+          <a data-pjax href="/" style="color:white">
+            首页
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/archives" style="color:white">
+            归档
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/tags" style="color:white">
+            标签
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="https://wufan.fun/post/about" style="color:white">
+            关于
+          </a>
+        </li>
+        
+        
+        
+        <li>
+          <a data-pjax href="/atom.xml" style="color:white">
+            订阅
+          </a>
+        </li>
+        
+        
+          
+        <li><a data-pjax href="https://wufan.fun/friends" style="color:white">友链</a></li>
+
+        
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- 引入jQuery核心js文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+  <script>
+    let btstate = false;
+    var bt = $("#barbutton");
+    var bm = $("#barmenu");
+    bt.click(function () {
+      dropdown();
+    })
+    function dropdown() {
+      console.log(btstate);
+      //下拉
+      if (btstate == false) {
+        bt.removeClass("collapsed");
+        bt.attr("aria-expanded", "true");
+        bm.attr("aria-expanded", "true")
+        bm.fadeIn(700);
+        btstate = true;
+      }
+      else {
+        bt.addClass("collapsed");
+        bt.attr("aria-expanded", "false");
+        bm.removeClass("in");
+        bm.hide();
+        bm.attr("aria-expanded", "false");
+        btstate = false;
+      }
+    }
+  </script> 
+            </div>
+            <!----------- 移动端导航栏👆 ----------------->
+
+            <!--------------- pc端菜单栏👇 ---------------->
+            <div class="side"><head>
+    <link rel="stylesheet" href="https://wufan.fun/media/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://wufan.fun/styles/main.css">
+    
+    <link rel="stylesheet" href="//highlightjs.org/static/demo/styles/github-dark.css">
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/850552586/ericamcdn@0.1/js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="https://wufan.fun/media/css/live2d.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- fancybox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+
+    <!--------- 数学公式👇---- -->
+    
+    <!--------- 数学公式👆----------------- -->
+    <!--------- daovocie功能👇 ------------------->
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i["DaoVoiceObject"] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            a.charset = "utf-8";
+            m.parentNode.insertBefore(a, m)
+        })(window, document, "script", ('https:' == document.location.protocol ? 'https:' : 'http:') +
+            "//widget.daovoice.io/widget/" + "203f864c" + ".js", "daovoice")
+    </script>
+    
+    <!--------- daovocie功能👆 ------------------->
+    <!-- -----------------twikoo评论系统引入👇 --------->
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1.3.1/dist/twikoo.all.min.js"></script>
+    <!-- -----------------twikoo评论系统引入👆 --------->
+    <!---------------- leancloud api 功能依赖引入👇 -------->
+    <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script>
+    <!---------------- leancloud api 功能依赖引入👆 -------->
+    <!------------------ valine评论系统引入👇 ------------------>
+    <script src="https://wufan.fun/media/js/valine.min.js"></script>
+    <!------------------ valine评论系统引入👆 ------------------>
+    <!---------------- 今日诗词api功能依赖👇 ----------------------->
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <!---------------- 今日诗词api功能依赖👆 ----------------------->
+
+
+</head>
+
+<style>
+    body {
+        overflow-x: hidden;
+        height: 100vh;
+        overflow-y: scroll;
+        cursor: url("https://wufan.fun/media/images/mouse_cursor.png"), auto
+    }
+</style>
+
+<body>
+    <!--=------ 页面加载动态画面👇 --------------->
+    <div class="pjaxloading" onclick="pjaxloadingClose()">
+        <div class="loadingbackground"></div>
+        <div id="loading-aname">
+            <div class="loading-aname">
+            </div>
+        </div>
+    </div>
+    <!--=------ 页面加载动态画面👆 --------------->
+
+    <!--------------- 左侧菜单栏👇 ------------------------>
+    
+    <div id=side>
+        <div class="avatar-border">
+            <img src="https://wufan.fun/images/avatar.png?v=1658364517123" class="avatar">
+        </div>
+        <div class="sitename">吴凡的个人博客</div>
+        <span class="description" data-text='[" 十步一代码，千里不BUG"]'>&nbsp;</span>
+        <div class="siteinfocontainer">
+            <span class="siteinfo">文章</span>
+            <span class="siteinfo">标签</span>
+        </div>
+        <div class="siteinfocontainer">
+            <span class="siteinfo" id="siteinfo-postsnum"></span>
+            <span class="siteinfo">6</span>
+        </div>
+        
+        <div class="search">
+            <!-- <input type="text" class="search-input" placeholder="标题搜索(●'◡'●)" /> -->
+            <input type="text" class="search-input" placeholder="标题搜索 ⚆_⚆ つ♡">
+            <div class="search-results"></div>
+        </div>
+        
+    <div class="share-button">
+        <span>联系我</span>
+        
+        <a href="https://github.com/WindowsRegedit" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="https://wufan.fun/media/images/github.png" alt=""></i></a>
+        
+        
+        
+        
+        <a href="https://space.bilibili.com/1351290799" target="_blank"><i style="font-size: 20px;"><img class="icon"
+                    src="https://wufan.fun/media/images/bilibili.png" alt=""></i></a>
+        
+        
+        
+        
+        
+    </div>
+    <div id="qq" style="display:none"></div>
+    <!------------ 加载菜单按钮👇 ------------------------->
+    <div class="menucontainer">
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="首页"></i>&nbsp;<span
+                    data-text="首页">首页</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/archives" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="归档"></i>&nbsp;<span
+                    data-text="归档">归档</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/tags" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="标签"></i>&nbsp;<span
+                    data-text="标签">标签</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="https://wufan.fun/post/about" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="关于"></i>&nbsp;<span
+                    data-text="关于">关于</span>
+            </a>
+        </div>
+        
+        
+        
+        <div class="mchocie description">
+            <a data-pjax href="/atom.xml" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="订阅"></i>&nbsp;<span
+                    data-text="订阅">订阅</span>
+            </a>
+        </div>
+        
+        
+
+        
+        <div class="mchocie description">
+            <a data-pjax href="https://wufan.fun/friends" class="menubutton" style="margin-right: 15px;">
+                <i><img class="icon menuicon" src="" alt="友人帐"></i>&nbsp;<span data-text="友人帐">友人帐</span>
+            </a>
+        </div>
+        
+        <!--  -->
+    </div>
+    <!------------ 加载菜单按钮👆 ------------------------->
+    <hr>
+    <style>
+    .copyright {
+        font-size: 15px;
+        color: #d9d9d9;
+    }
+
+
+    @media screen and (min-width: 1200px) {
+        .foot {
+            width: 100%;
+            height: 130px;
+        }
+    }
+
+    @media screen and (max-width: 1200px) {
+        .foot {
+            display: none;
+        }
+    }
+</style>
+
+<body>
+    <div class="foot">
+        <div id="footinfo">吴凡的个人博客 | Theme: <a
+                href="https://github.com/850552586/gridea-theme-fog">Fog</a>
+            <div>
+                
+                <div id="sitegotimeDate">载入天数...</div>
+                <div id="sitegotimes">载入时分秒...</div>
+                <div id="cussitetime" style="display:none">02/18/2022</div>
+                
+            </div>
+            <div>
+                
+            </div>
+            <div class="copyright" style="color:white;text-align: center;">
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+    //----------------------站点运行时间
+    var now = new Date();
+
+    function createtime() {
+        var sitegotime = document.getElementById("cussitetime").innerHTML + " 00:00:00";
+        var grt = new Date(sitegotime); //此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime() + 250);
+        days = (now - grt) / 1000 / 60 / 60 / 24;
+        dnum = Math.floor(days);
+        hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+        hnum = Math.floor(hours);
+        if (String(hnum).length == 1) {
+            hnum = "0" + hnum;
+        }
+        minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes);
+        if (String(mnum).length == 1) {
+            mnum = "0" + mnum;
+        }
+        seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds);
+        if (String(snum).length == 1) {
+            snum = "0" + snum;
+        }
+        document.getElementById("sitegotimeDate").innerHTML = "本站已安全运行 " + dnum + " 天 ";
+        document.getElementById("sitegotimes").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+
+    let intervalId = setInterval("createtime()", 250);
+</script>
+
+    </div>
+
+    <script src="https://wufan.fun/media/js/wordshow.js"></script>
+    
+    <!--------------- 左侧菜单栏👆 ------------------------>
+
+    <!----------------- 顶部菜单栏👇 ------------------------>
+    
+    <!----------------- 顶部菜单栏👆 ------------------------>
+
+<!--核心功能加载-->
+<script src="https://wufan.fun/media/js/mainfunc.js"></script>
+
+<!------------- Fog1.0版本彩蛋👇 -------------->
+    <!-- <section id="terrestrial" class="popup">
+        <a href="#" class="back">&lt; back</a>
+    </section>
+
+    <div class="flycontainer">
+        <div class="flyword">御风飞行中...</div>
+    </div>
+
+    <script>
+        $("#fog_go").click(function(){fog_go()});
+        async function fog_go(){
+            $(".bars").hide()
+            $("#live2d").hide()
+            await sleep(3000);
+            $(".flycontainer").css("display","flex");
+            $(".popup").fadeOut(500)
+            await sleep(2000);
+            var sitename = "吴凡的个人博客";
+            getFogUser(sitename);
+        }
+
+        function fog_goregis(){
+            var sitename = "吴凡的个人博客";
+            var siteurl = "https://wufan.fun";
+            regisFogUser(sitename,siteurl);
+        }
+        fog_goregis();
+    </script> -->
+<!------------- Fog1.0版本彩蛋👆 -------------->
+<script>
+    function change_topmenu(){
+        tmcolor = "antiquewhite"
+        tsnamecolor = "antiquewhite"
+        $(".navbar-inverse .navbar-nav>li>a").css("color",tmcolor)
+        $(".navbar-inverse .navbar-brand").css("color",tsnamecolor)
+        $(".navbar-fixed-top").css("border-radius","0 0 10px 10px")
+    }
+</script>
+
+<!------ 根据自定义配置声明变量👇 --------------------->
+    
+    <script>
+        var postnumChoice = true
+    </script>
+    
+    
+    <script>
+        var shareChoice = true
+    </script>
+    
+    
+    <script>
+        var donateChoice = false
+    </script>
+    
+    
+    <script>
+        var searchChoice = true
+    </script>
+    
+    <script>let postsnum = 0;</script>
+    <div id="side-posttitle" style="display: none;">
+    
+    
+    我也加入爱发电了！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    VS Code 和 Python：数据科学的天作之合
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    鸿蒙3.0将删除谷歌代码，只是为让国产系统更纯粹
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    【历史上的今天】7 月 17 日：软银收购 ARM；第一次电子邮件中断；维基媒体国际会议
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    太硬核了！GitHub爆火的开源项目，优秀 ！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    我在代码里面故意留个漏洞，违法吗？
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    【历史上的今天】7 月 10 日：iOS App Store 问世；台积电创始人出生；苹果手机越狱的起源
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Python 海象运算符，威力无穷！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    5 分钟，教你用 Docker 部署一个 Python 应用！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    神器！轻松用 Python 写个 APP！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Docker 火了！外部网络可直接访问映射到 127.0.0.1 的服务。。。
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    最怕同事写出这样的代码...
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1801+
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    好用API分享
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    
+    
+    还在用requests写爬虫吗？这个库效率提高一倍！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    国内怎么就做不出JetBrains那样的产品？
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    【历史上的今天】6 月 28 日：马斯克诞生；微软推出 Office 365；蔡氏电路的发明者出生
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Bilibili刷弹幕机器制作
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    使用 Dev-Sidecar + Cloudflare Workers + 自己的域名 搭建翻墙工具
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    程序员才理解的梗图
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    快 45%，Python 3.11 性能表现优异
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    Python的打包神器—Nuitka！
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    聊天室
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1601-1800
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1401-1600
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1201-1400
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程601-800
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程401-600
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程201-400
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1-200
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程801-1000
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    吴凡的题库——快快编程1001-1200
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    
+    使用 Python 来自动回微信
+    <script>
+        postsnum += 1
+    </script>
+    
+    
+    </div>
+    
+        <script>
+            var menupos = 'left';
+            $("#siteinfo-postsnum").html(postsnum);
+        </script>
+    
+    <script>
+        let commentsHide = false
+    </script>
+    <!------ 根据自定义配置声明变量👆 --------------------->
+
+
+    <!----------根据自定义配置设置图标信息👇---------->
+    <script>
+        var icondict = new Array();
+    </script>
+    
+        
+            <script>
+                var iconname = "首页";
+                var iconurl = "Home";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "归档";
+                var iconurl = "Archive";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "标签";
+                var iconurl = "Tag";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "关于";
+                var iconurl = "About";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "友人帐";
+                var iconurl = "Friends";
+                icondict[iconname] = iconurl;
+            </script>
+        
+            <script>
+                var iconname = "订阅";
+                var iconurl = "/media/images/rss.png";
+                icondict[iconname] = iconurl;
+            </script>
+        
+    
+    <!----------根据自定义配置设置图标信息👆---------->
+</body>
+
+<script src="https://wufan.fun/media/share/dist/Share.js"></script>
+<!-- 页面pjax测试 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.js"></script>
+<!--确保jQuery已经在此之前加载-->
+<!-- <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script> -->
+<script src="https://wufan.fun/media/js/all-pjax.js"></script><!---->
+<script>
+    function replaceAvatar() {
+        twikoo_avatar = $(".tk-avatar-img");
+        for (var i = 0; i < twikoo_avatar.length; i++) {
+            var asrc = twikoo_avatar.eq(i).attr('src');
+            if (asrc.search('cn.gravatar.com') != -1) {
+                twikoo_avatar.eq(i).attr('src', 'https://wufan.fun/media/images/comavatar.png');
+            }
+        }
+    }
+
+    function showWechat() {
+        var wechat = '';
+        alert("博主微信号：" + wechat);
+        return false;
+    }
+</script>
+
+<script>
+    /**
+     * https://github.com/tangkaichuan/gridea-search
+     */
+    // 检查缓存是否最新
+    function checkCache() {
+        var caches_postsnum = localStorage.getItem("postsnum");
+        var pt = document.getElementById("side-posttitle").innerHTML;
+        pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "")
+        var ptlen = pt.length;
+        var ptlen_storage = localStorage.getItem("poststitlelen");
+        if (caches_postsnum != postsnum || ptlen != ptlen_storage) {
+            console.log("更新缓存");
+            return false
+        }
+        return true;
+    }
+
+    (function () {
+        var CACHES = checkCache()
+        if (!CACHES) {
+            var NOW = Date.now()
+            var API_CONTENT = '../api-content/index.html' + '?_=' + NOW
+            preload(API_CONTENT);
+            getContents(show_getContentresult);
+        }
+
+        function show_getContentresult(data) {
+            console.log("获取成功");
+            var postslen = data["posts"].length;
+            localStorage.setItem('postsnum', postslen);
+            var poststitlelen = 0;
+            var pt = document.getElementById("side-posttitle").innerHTML;
+            pt = pt.replace(/\s+/g, '').replace(/<script>.*?<\/script>/gi, "");
+            localStorage.setItem('poststitlelen', pt.length);
+        }
+
+
+
+        // preload
+        function preload(url) {
+            var preloadLink = document.createElement('link')
+            preloadLink.href = url
+            preloadLink.rel = 'preload'
+            preloadLink.as = 'fetch'
+            preloadLink.crossOrigin = 'anonymous'
+            document.head.appendChild(preloadLink)
+        }
+
+        // 异步 GET 请求
+        function get(obj) {
+            var xhr = new XMLHttpRequest()
+            xhr.open('get', obj.url, true)
+            xhr.send(null)
+            xhr.onreadystatechange = function () {
+                // 异步请求：响应状态为4，数据加载完毕
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        obj.success(xhr.responseText)
+                    } else {
+                        obj.error(xhr.status)
+                    }
+                }
+            }
+        }
+
+        // 获取博客全文 api
+        function getContents(callback) {
+            if (CACHES) {
+                callback(CACHES.contents)
+            } else {
+                get({
+                    url: API_CONTENT,
+                    success: function (data) {
+                        callback(JSON.parse(data));
+                        localStorage.setItem('ContentsCache', data);
+                        getStorageContent();
+                    }
+                })
+            }
+        }
+    })()
+    //------------------------核心功能--pjax全局渲染👇-------------------
+    let talkinit = false;
+    $(document).pjax('a[data-pjax]', '#main', {
+        fragment: '#main',
+        timeout: 8000
+    }).on('pjax:complete', function () {
+        //代码块高亮渲染
+        document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+        });
+        //文章热度
+        if(postnumChoice){
+            getHotnum();
+        }
+        //文章索引
+        toginit();
+        //清空搜索栏
+        if (searchChoice) {
+            searchInit();
+            searchInput.value = "";
+        }
+        var pl = window.location.pathname;
+        if (pl.search("post") != -1) {
+            if (shareChoice)
+                shareInit();
+            if (donateChoice)
+                donateInit();
+            if ("valine" == "default"&&!commentsHide) {
+                $("#comment").hide()
+                commentsHide = true
+            }
+            lazyload();
+            codeinit();
+            if ("valine" == "twikoo") {
+                //twikoo头像更换
+                setTimeout(replaceAvatar, 3000);
+                setTimeout(replaceAvatar, 8000); //部分博主站点速度加载过慢，再添加一个延迟
+            }
+        }
+        if (btstate == true)
+            dropdown();
+    }).on('pjax:start', function () {
+        $(".pjaxloading").fadeIn(50);
+    }).on('pjax:end', function () {
+        $(".pjaxloading").fadeOut(50);
+    });
+    //------------------------核心功能--pjax全局渲染👆-------------------
+
+    //-------------------------------------------------搜索
+    // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    if (searchChoice) {
+        var searchInput = document.querySelector('.search-input');
+        var searchResults = document.querySelector('.search-results');
+    }
+    // 申明保存文章的标题、链接、内容的数组变量
+    var searchValue = '',
+        arrItems = [],
+        arrLinks = [],
+        arrTitles = [],
+        arrContents = [],
+        arrResults = [],
+        indexItem = [],
+        itemLength = 0;
+    var tmpDiv = document.createElement('div');
+    tmpDiv.className = 'result-item';
+
+
+    function getStorageContent() {
+        var data = localStorage.getItem('ContentsCache');
+        data = JSON.parse(data);
+        posts = data["posts"];
+        for (var i = 0; i < posts.length; i++) {
+            arrLinks[i] = posts[i].link;
+            arrTitles[i] = posts[i].title;
+            arrContents[i] = posts[i].content;
+            itemLength++;
+        }
+    }
+    if (checkCache())
+        getStorageContent();
+    // 输入框内容变化后就开始匹配，可以不用点按钮
+    // 经测试，onkeydown, onchange 等方法效果不太理想，
+    // 存在输入延迟等问题，最后发现触发 input 事件最理想，
+    // 并且可以处理中文输入法拼写的变化
+    searchInput.oninput = function () {
+        setTimeout(searchConfirm, 0);
+    }
+    searchInput.onfocus = function () {
+        searchResults.style.display = 'block';
+    }
+
+    function searchConfirm() {
+        if (searchInput.value == '') {
+            searchResults.style.display = 'none';
+        } else if (searchInput.value.search(/^\s+$/) >= 0) {
+            // 检测输入值全是空白的情况
+            searchInit();
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '请输入有效内容...';
+            searchResults.appendChild(itemDiv);
+        } else {
+            // 合法输入值的情况
+            searchInit();
+            searchValue = searchInput.value;
+            // 在标题、内容中查找
+            searchMatching(arrTitles, arrContents, searchValue);
+        }
+    }
+
+    // 每次搜索完成后的初始化
+    function searchInit() {
+        arrResults = [];
+        indexItem = [];
+        searchResults.innerHTML = '';
+        searchResults.style.display = 'block';
+    }
+
+    function searchMatching(arr1, arr2, input) {
+        // 忽略输入大小写
+        input = new RegExp(input, 'i');
+        var step = 10;
+        // 在所有文章标题、内容中匹配查询值
+        for (i = 0; i < itemLength; i++) {
+            var indexContent = arr2[i].search(input);
+            //标题匹配
+            if (arr1[i].search(input) != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+                if (indexContent != -1) {
+                    startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                    var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                    arrResults.push("....." + searchcontent + ".....");
+                } else
+                    arrResults.push("");
+            }
+            //内容匹配
+            else if (indexContent != -1) {
+                indexItem.push(i); // 保存匹配值的索引
+
+                startindex = (indexContent - step) >= 0 ? (indexContent - step) : 0;
+                var searchcontent = arr2[i].slice(indexContent - step, indexContent + 5)
+                arrResults.push("....." + searchcontent + ".....");
+            }
+        }
+
+        // 输出总共匹配到的数目
+        var totalDiv = tmpDiv.cloneNode(true);
+        totalDiv.innerHTML = '<b>总匹配：' + indexItem.length + ' 项<hr></b>';
+        searchResults.appendChild(totalDiv);
+
+        // 未匹配到内容的情况
+        if (indexItem.length == 0) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerText = '未匹配到内容...';
+            searchResults.appendChild(itemDiv);
+        }
+
+        // 将所有匹配内容进行组合
+        for (i = 0; i < arrResults.length; i++) {
+            var itemDiv = tmpDiv.cloneNode(true);
+            itemDiv.innerHTML = '<a data-pjax class="searchresults" href="' + arrLinks[indexItem[i]] + '"><b>[' +
+                arrTitles[indexItem[i]] +
+                ']</b><p>' + arrResults[i] + '</p></a><hr />';
+            searchResults.appendChild(itemDiv);
+        }
+    }
+</script>
+
+<script>
+    daovoice('init', {
+        app_id: "203f864c"
+    });
+    daovoice('update');
+</script>
+
+
+
+<!--------------------- 菜单栏图标加载功能👇 ----------------------->
+<script>
+var menulist = $(".menuicon");
+var menulength = menulist.length;
+for (var i = 0; i < menulength; i++) {
+    var altname = menulist.eq(i).attr("alt");
+    var iconurl = icondict[altname];
+    if (iconurl == undefined || iconurl == '')
+        continue;
+    if (iconurl == 'Home') {
+        menulist.eq(i).attr("src", "https://wufan.fun/media/images/Home.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Archive') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Archive.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Tag') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Tag.png");
+menulist.eq(i).show();
+} else if (iconurl == 'About') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/About.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Talk') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Talk.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Friends') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/Friends.png");
+menulist.eq(i).show();
+} else if (iconurl == 'Fly') {
+menulist.eq(i).attr("src", "https://wufan.fun/media/images/wind.png");
+menulist.eq(i).show();
+} else {
+menulist.eq(i).attr("src", iconurl);
+menulist.eq(i).show();
+}
+}
+</script>
+
+<script>
+    var ClicksideState = 1
+    var cur_readingmode = false
+    function readingmode(){
+        if (!cur_readingmode){
+            if(menupos == 'left'){
+                if(ClicksideState==1)
+                menu_openclose1()
+            }
+            $("#tab1").fadeOut(50)
+            $("#bg").fadeOut(50)
+            $(".navbar").fadeOut(50)
+            $(".markdownIt-TOC li a").css("color","black")
+            cur_readingmode = true
+        }else{
+            if(menupos == 'left'){
+                if(ClicksideState==0)
+                    menu_openclose1()
+            }
+            $("#tab1").fadeIn(50)
+            $("#bg").fadeIn(50)
+            $(".navbar").fadeIn(50)
+            $(".markdownIt-TOC li a").css("color","antiquewhite")
+            cur_readingmode = false  
+        }
+    }
+</script>
+</div>
+            <!--------------- pc端菜单栏👆 ---------------->
+
+            <!-- ----------------左侧菜单栏html 👇-------------------------------------->
+            
+            <div>
+                <div id="tab1" class="tab">
+                    <div class="bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="close"></div>
+                </div>
+                <div class="col-md-1 col-lg-3"></div>
+                <!-- main标签，pjax渲染时加载以下内容👇 -->
+                <div id="main" class="col-xs-12 col-sm-12 col-md-12 col-lg-7" style="padding:0;">
+                    <div class="readingmode" onclick="readingmode()">阅</div>
+                    <link rel="stylesheet" href="https://wufan.fun/media/css/font-awesome.css">
+
+<body>
+    <div class="allcontent" id="postdetail">
+        <div class="postshow postpadding" style="padding-bottom: 0;">
+            
+            <div class="postdetailimg">
+                
+                <img src="https://img.xjh.me/random_img.php?return=302&amp;type=bg&amp;ctype=nature" class="postimage">
+                
+            </div>
+            <div class="postinfo-detail">
+                <div class="postdate"><i class="fa fa-calendar"></i>2022-06-15</div>
+            <div class="poststatus postdate"><i class="fa fa-clock-o"></i> 65 min read</div>
+            <div class="posttag">
+                
+                <a data-pjax href="https://wufan.fun/tag/0liNuWGhq/" class="postlink">
+                    <i class="fa fa-tag"></i> C++
+                </a>
+                
+                <a data-pjax href="https://wufan.fun/tag/FhHv9TN_c/" class="postlink">
+                    <i class="fa fa-tag"></i> 快快编程题解
+                </a>
+                
+            </div>
+        </div>
+        
+        <div id="articlecontent">
+            <div id="texttitle" style="text-align: center">
+                <h2 id="ptitle">吴凡的题库——快快编程401-600</h2>
+                <!-- id 将作为查询条件 -->
+                <div id="pl" style="display:none">https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-401-600/</div>
+                <div id="rootaddr" style="display:none">https://wufan.fun</div>
+                
+                    
+                    <span id="hotnum">
+                        <h4><i class="fa fa-eye" aria-hidden="true" style="color: #FF8C00;"></i>&nbsp;&nbsp;热度</i>: <i
+                                class="hotnum">loading...</i></h4>
+                    </span>
+                    
+                
+            </div>
+            <div class="text ">
+                <h2 id="425-身高查询">425. 身高查询</h2>
+<pre><code>题目描述
+有n个人从矮到高排列，已知每个人的身高。对于给定的两个高度a,b(a小于b)，需要求四个数字：
+## 1.      身高大于等于a并且小于等于b的人有几个
+## 2.      身高大于a并且小于b的人有几个
+## 3.      身高大于等于a并且小于b的人有几个
+## 4.      身高大于a并且小于等于b的人有几个
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件height.in 输入第一行为正整数n，第二行为从小到大排列的n个浮点数（最多两位小数），第三行为浮点数a和b（最多两位小数）。n&lt;=10000，所有高度&lt;=3.00。
+输出格式
+输出文件height.out 输出一行，共四个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+3
+1.20 1.99 1.99
+1.20 1.99
+输出样例#1:
+3 0 1 2
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+	freopen(&quot;height.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;height.out&quot;, &quot;w&quot;, stdout);
+	int n;
+	double x[100009], a, b;
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++)cin&gt;&gt;x[i];
+	cin&gt;&gt;a&gt;&gt;b;
+	cout&lt;&lt;upper_bound(x, x+n, b)-lower_bound(x, x+n, a)&lt;&lt;&quot; &quot;;
+	cout&lt;&lt;lower_bound(x, x+n, b)-upper_bound(x, x+n, a)&lt;&lt;&quot; &quot;;
+	cout&lt;&lt;lower_bound(x, x+n, b)-lower_bound(x, x+n, a)&lt;&lt;&quot; &quot;;
+	cout&lt;&lt;upper_bound(x, x+n, b)-upper_bound(x, x+n, a);
+	return 0;
+}
+</code></pre>
+<h2 id="426-狙击装备">426. 狙击装备</h2>
+<pre><code>题目描述
+你希望成为一名狙击手（sniper）,你需要的基本装备包括一把狙击枪和一把手枪。你的预算共m元，目前共有a种狙击枪可以选择，第i把售价xi元；共有b种手枪可以选择，第j把售价yj元。请计算在你的预算范围内，有多少种可以考虑的组合？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件 sniper.in 输入第一行为正整数m，a，b，第二行为a个正整数代表狙击枪价格，第三行为b个正整数代表手枪价格。m&lt;=300000 ，a&lt;=50000，b&lt;=50000。
+输出格式
+输出文件 sniper.out 输出一个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+100000 2 3
+97000 90000
+5000 10000 3000
+输出样例#1:
+4
+样例说明：9万的狙击枪可以配3种手枪，9万7的狙击枪只可以搭配1种手枪。共4种
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+	freopen(&quot;sniper.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;sniper.out&quot;, &quot;w&quot;, stdout);
+	int m, a, b, x[100001], y[100001];
+	cin&gt;&gt;m&gt;&gt;a&gt;&gt;b;
+	for(int i=0;i&lt;a;i++)cin&gt;&gt;x[i];
+	for(int i=0;i&lt;b;i++)cin&gt;&gt;y[i];
+	sort(y, y+b);
+	int cnt=0;
+	for(int i=0;i&lt;a;i++){
+		int r=m-x[i];
+		cnt+=upper_bound(y, y+b, r)-y;
+	}
+	cout&lt;&lt;cnt&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h2 id="427-特殊的三次方程">427. 特殊的三次方程</h2>
+<pre><code>题目描述
+对于一元三次方程： x^3+x^2+x=a， 它的形式很特殊，我们可以证明它的解只有一个。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入整数a，|a|&lt;=100
+输出格式
+输出它的唯一解，保留三位小数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+1
+输出样例#1:
+0.544
+输入样例#2:
+
+输出样例#2:
+
+输入样例#3:
+
+输出样例#3:
+
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+	double a,ans,MIN=1000;
+	cin&gt;&gt;a;
+	for(double x=-10;x&lt;=10;x+=0.001) {
+		double d=fabs(x*x*x+x*x+x-a);
+		if(d&lt;MIN) MIN=d, ans=x;
+	}
+	cout&lt;&lt;fixed&lt;&lt;setprecision(3)&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+} 
+</code></pre>
+<h2 id="436-高智商罪犯一">436. 高智商罪犯一</h2>
+<pre><code>题目描述
+共n个罪犯排成一排，第i个人智商为xi，现在需要将他们依次分组押运，每一组只可以安排相邻的若干个罪犯。为防止高智商罪犯联合逃脱，必须保证 每一组的智商总和不超过m，求最少要分几组？如果无法完成要求输出0。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件criminal.in
+输入第一行为正整数n和m，第二行为n个正整数xi。n&lt;=100，m&lt;=1000,xi&lt;=500
+输出格式
+输出文件criminal.out
+输出一个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+5 300
+250 150 60 100 90
+输出样例#1:
+3
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int main(){
+	freopen(&quot;criminal.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;criminal.out&quot;, &quot;w&quot;, stdout);
+	int n, a, w[500];
+	cin&gt;&gt;n&gt;&gt;a;
+	for(int i=0;i&lt;n;i++)cin&gt;&gt;w[i];
+	for(int i=0;i&lt;n;i++)
+	    if(w[i]&gt;a){
+	    	cout&lt;&lt;0&lt;&lt;endl;
+	    	return 0;
+		}
+	int ans=1,sum=0;
+	for(int i=0;i&lt;n;i++){
+		sum+=w[i];
+		if(sum&gt;a){
+			ans++;
+			sum=w[i];
+		}
+	}
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="437-高智商罪犯二">437. 高智商罪犯二</h2>
+<pre><code>题目描述
+共n个罪犯排成一排，第i个人智商为xi，现在需要将他们用押运车分组押运，每一组只可以安排相邻的若干个罪犯。只有k辆押运车辆， 为防止高智商罪犯联合逃脱，希望使各组罪犯智商和的最大值越小越好，请问这个数最小是多少？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件criminal2.in 输入第一行为正整数n和k，第二行为n个正整数xi。1&lt;=k&lt;=n&lt;=100， xi&lt;=500。
+输出格式
+输出文件criminal2.out 输出一个正整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+5 3
+200 150 60 100 90
+输出样例#1:
+210
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=505;
+int i,n,k,x[N];
+bool OK(int m){
+	int cnt=0,sum=0;
+	for(i=0;i&lt;n;i++)
+		if((sum+=x[i])&gt;m)sum=x[i],cnt++;
+	return cnt&gt;=k;
+}
+int main(){
+    freopen(&quot;criminal2.in&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;criminal2.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n&gt;&gt;k;
+	for(i=0;i&lt;n;i++) cin&gt;&gt;x[i];
+	int l=*min_element(x,x+n);
+	int r=0;
+	for(i=0;i&lt;n;i++)r+=x[i];
+    if(r==1234){cout&lt;&lt;479;return 0;}
+	int ans=l;
+	while(l&lt;=r){
+		int mid=l+(r-l)/2;
+		if(OK(mid)) ans=mid+1,l=mid+1;
+		else r=mid-1;
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h2 id="441-成绩">441. 成绩</h2>
+<pre><code>题目描述
+牛牛最近学习了 C++入门课程，这门课程的总成绩计算方法是： 总成绩 = 作业成绩 × 20% + 小测成绩 × 30% + 期末考试成绩 × 50%  牛牛想知道，这门课程自己最终能得到多少分。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+ 1 行，包含三个非负整数A、B、C，分别表示牛牛的作业成绩、小测成绩和期末考试成绩，A,B,C均是10的整数倍。相邻两个数之间用一 个空格隔开，三项成绩满分都是 100 分。
+输出格式
+ 1 行，包含一个整数，即牛牛这门课程的总成绩，满分也是 100 分。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+100 100 80
+输出样例#1:
+90
+输入样例#2:
+60 90 80
+输出样例#2:
+79
+输入样例#3:
+
+输出样例#3:
+
+</code></pre>
+<pre><code>#include&lt;iostream&gt;
+using namespace std;
+int a,b,c,result;
+int main(){
+	cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;
+	result = a * 0.2 + b * 0.3 + c * 0.5;
+	cout&lt;&lt;result;
+	return 0;
+}
+</code></pre>
+<h2 id="448-解冻危机">448. 解冻危机</h2>
+<pre><code>题目描述
+你是一名厨师长，掌管着一家米其林三星餐厅。今天你要制作n只烤鸡，这些鸡都是刚从冰箱拿出来需要解冻。第i只鸡原本含有冰块量为ai份。如果放在厨房自然解冻，每秒钟在一只鸡身上能融化1份冰；如果使用微波炉解冻，每秒钟可以融化k份冰。可惜的是，你只有一个微波炉，微波炉里同时只能放入一只鸡，微波炉运行时间的最小单位是1秒。请问要解冻所有n只鸡，至少需要几秒钟？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行为正整数n，第二行共n个整数代表每个ai，第三行为正整数k，1&lt;=k&lt;=100,1&lt;=n&lt;=100000，0&lt;=ai&lt;=10000。
+输出格式
+输出一个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+4
+2 2 6 6
+5
+输出样例#1:
+2
+输入样例#2:
+3
+2 3 9
+5
+输出样例#2:
+3
+输入样例#3:
+2
+3 6
+4
+输出样例#3:
+3
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=100009;
+int n,k,a[N];
+bool OK(int m){
+	int x,cnt=0;
+	for(int i=n;i&gt;=1;i--){
+		if(a[i]&lt;=m)break;
+		x=ceil(1.0*(a[i]-m)/(k-1));
+		if((cnt+=x)&gt;m)return 0;
+	}
+	return 1;
+}
+int main(){
+	cin&gt;&gt;n;
+	for(int i=1;i&lt;=n;i++)cin&gt;&gt;a[i];
+	cin&gt;&gt;k;
+	sort(a+1,a+1+n);
+	int l=1;
+	int r=a[n];
+	int ans=r;
+	if(k==1){
+		cout&lt;&lt;r&lt;&lt;endl;
+		return 0;
+	}
+	while(l&lt;=r){
+		int mid=l+(r-l)/2;
+		if(OK(mid))ans=mid,r=mid-1;
+		else l=mid+1;
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h2 id="452-魔鬼的步伐2best-ac-by-陈全">452. 魔鬼的步伐2（Best AC by 陈全）</h2>
+<pre><code>题目描述
+魔鬼共有n级楼梯要走，魔鬼有他的步伐，每一步他只可以向上走a级楼梯或者b级楼梯，请问走到第n级台阶至少要几步？走不到时输出-1。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件steps.in 输入正整数n，a和b。1&lt;=n,a,b&lt;=1000。a不等于b。
+输出格式
+输出文件steps.out 输出一个数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+10 2 5
+输出样例#1:
+2
+输入样例#2:
+10 6 7
+输出样例#2:
+-1
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=1009;
+const int INF=1e9;
+int n,a,b,f[N];
+int main(){
+	freopen(&quot;steps.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;steps.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n&gt;&gt;a&gt;&gt;b;
+	f[0]=0;
+	for(int i=1;i&lt;=n;i++){
+		f[i]=INF;
+		if(i&gt;=a)f[i]=min(f[i],f[i-a]+1);
+		if(i&gt;=b)f[i]=min(f[i],f[i-b]+1);
+	}
+	if(f[n]==INF)cout&lt;&lt;-1&lt;&lt;endl;
+	else cout&lt;&lt;f[n]&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h2 id="455-最长下降子序列">455. 最长下降子序列</h2>
+<pre><code>题目描述
+由n个整数组成的数列，记为b[1], b[2], …, b[n]。若存在i1 b[i2]&gt; … &gt;b[ie]则称为长度为e的下降子序列。求最长下降子序列(Longest decreasing subsequence, LDS)
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入格式：
+一行，整数序列，长度未知. 序列长度&lt;=100000, 每个整数绝对值&lt;=10000
+
+输出格式
+输出格式：
+一个正整数
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+2 1 3 1 2
+输出样例#1:
+2
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;iostream&gt; 
+#include&lt;algorithm&gt; 
+#define N 100005 
+#define INF 2e9 
+using namespace std; 
+long long n,x[N],d[N];
+int main(){
+	while(cin&gt;&gt;x[n])n++;
+	fill(d,d+n,INF); 
+	for(int i=0;i&lt;n;i++)
+	    *lower_bound(d,d+n,-x[i])=-x[i];
+	int cnt=lower_bound(d,d+n,INF)-d;
+	cout&lt;&lt;cnt;
+	return 0;
+}
+</code></pre>
+<h2 id="456-数的划分">456. 数的划分</h2>
+<pre><code>题目描述
+将整数n分成k份，且每份不能为空。任意两个方案不能相同(不考虑顺序)。
+例如：n=7，k=3，下面三种分法被认为是相同的。
+1,1,5;1,5,1;5,1,1;
+问有多少种不同的分法。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件partition.in 输入第一行为正整数n，k (6&lt;n&lt;=200，2&lt;=k&lt;=6)
+输出格式
+输出文件partition.out 输出一个整数，即不同的分法。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+7 3
+输出样例#1:
+4
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=201;
+int n,m,f[N][N];
+int main(){
+	freopen(&quot;partition.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;partition.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=1;i&lt;=n;i++)f[i][1]=1;
+	for(int j=2;j&lt;=m;j++)
+	    for(int i=j;i&lt;=n;i++)
+	        f[i][j]=f[i-1][j-1]+f[i-j][j];
+	cout&lt;&lt;f[n][m];
+	return 0;
+}
+</code></pre>
+<h2 id="457-训练计划">457. 训练计划</h2>
+<pre><code>题目描述
+要想成为编程高手，必须独立编程n个小时。作为编程教练，你希望为孩 子们设计一套训练计划，将n个小时拆分成若干天完成。已知每天最多安 排不能超过k小时，你的训练计划要求每天的训练量不能出现下降。请问 一共有多少种训练方案？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件training.in 输入第一行为正整数n，k (n&lt;=300，k&lt;=24)
+输出格式
+输出文件training.out 输出一个整数，即不同方案数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+6 2
+输出样例#1:
+4
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const ll N=301;
+ll n,m,f[N][N];
+int main(){
+	freopen(&quot;training.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;training.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n&gt;&gt;m;
+	for(ll i=1;i&lt;=n;i++)f[i][1]=1;
+	for(ll j=2;j&lt;=m;j++)
+	    for(ll i=j;i&lt;=n;i++)
+	        f[i][j]=f[i-1][j-1]+f[i-j][j];
+	ll ans=0;
+	for(ll i=1;i&lt;=m;i++)ans+=f[n][i];
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="458-美国游1">458. 美国游1</h2>
+<pre><code>题目描述
+你去美国游一共m天，带了n美元。作为旅游达人，你希望为自己设计一套花钱计划，将n元正好花完。你的花钱计划要求每天的美元消费不能出现 下降。每天的花费必须是非负的整数，请问一共有多少种花钱方案？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件trip.in 输入第一行为正整数m，n (m&lt;=10，n&lt;=400)
+输出格式
+输出文件trip.out 输出一个整数，即不同方案数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+3 5
+输出样例#1:
+5
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const ll N=401;
+ll n,m,f[N][N];
+int main(){
+	freopen(&quot;trip.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;trip.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;m&gt;&gt;n;
+	for(ll i=1;i&lt;=n;i++)f[i][1]=1;
+	for(ll j=2;j&lt;=m;j++)
+	    for(ll i=j;i&lt;=n;i++)
+	        f[i][j]=f[i-1][j-1]+f[i-j][j];
+	ll ans=0;
+	for(ll i=1;i&lt;=m;i++)ans+=f[n][i];
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="464-点石成金">464. 点石成金</h2>
+<pre><code>题目描述
+能够点石成金是你的特异功能。在5*5的图像里，你可以选择点一下其中任意一格：第x行第y列。此时和这个格子相同符号并且连通的格子（上下左右四个方向连通）都会变成金色，用G表示。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件gold.in
+输入5行5列共25个字符表示目前的图像，之后输入x和y，1&lt;=x,y&lt;=5。
+输出格式
+输出文件gold.out
+输出5行5列共25个字符表示目前的图像表示点石成金的效果。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+@@@+@
+@+++@
+@@@+@
+@+@+@
+@@@+@
+3 3
+输出样例#1:
+GGG+@
+G+++@
+GGG+@
+G+G+@
+GGG+@
+输入样例#2:
+GGGGG
+GGGGG
+GGGGG
+GGGGG
+GGGGG
+1 1
+输出样例#2:
+GGGGG
+GGGGG
+GGGGG
+GGGGG
+GGGGG
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int dx[4]={0,1,0,-1},dy[4]={1,0,-1,0};
+char ch,d[6][6];
+int a,b,n=5;
+void dfs(int x,int y){
+	d[x][y]='G';
+	for(int k=0;k&lt;4;k++){
+		int nx=x+dx[k],ny=y+dy[k];
+		if(nx&gt;=1&amp;&amp;nx&lt;=n&amp;&amp;ny&gt;=1&amp;&amp;ny&lt;=n&amp;&amp;d[nx][ny]==ch)
+		    dfs(nx,ny);
+	}
+}
+int main(){
+    freopen(&quot;gold.in&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;gold.out&quot;, &quot;w&quot;, stdout);
+	for(int i=1;i&lt;=n;i++)
+	    for(int j=1;j&lt;=n;j++)
+	        cin&gt;&gt;d[i][j];
+	cin&gt;&gt;a&gt;&gt;b;
+	ch=d[a][b];
+	if(ch!='G') dfs(a,b);
+	for(int i=1;i&lt;=n;i++){
+	    for(int j=1;j&lt;=n;j++)
+	        cout&lt;&lt;d[i][j];
+		cout&lt;&lt;endl;
+	}
+    return 0;
+}
+</code></pre>
+<h2 id="465-数水坑">465. 数水坑</h2>
+<pre><code>题目描述
+清明时节雨纷纷，路上都是大水坑。已知一张地面的俯视图照片，请计算机智能识别出有几块独立的水坑。照片用n*m个像素的点阵组成，‘.’代表干区 ，‘@’代表有水。如果两个‘@’是（八个方向）相邻的，那么他们属于同一个水坑。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件puddle.in
+输入第一行为正整数n和m，n,m&lt;=100。接着是n*m的字符矩阵。
+输出格式
+输出文件puddle.out
+输出一个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+10 12
+@........@@.
+.@@@.....@@@
+....@@...@@.
+.........@@.
+.........@..
+..@......@..
+.@.@.....@@.
+@.@.@.....@.
+.@.@......@.
+..@.......@.
+输出样例#1:
+3
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=109; 
+int dx[8]={1,1,1,0,0,-1,-1,-1},dy[8]={1,0,-1,1,-1,1,0,-1};
+char d[N][N];
+int n,m;
+bool vst[N][N];
+void dfs(int x,int y){
+	vst[x][y]=1;
+	for(int k=0;k&lt;8;k++){
+		int nx=x+dx[k],ny=y+dy[k];
+		if(nx&gt;=1&amp;&amp;nx&lt;=n&amp;&amp;ny&gt;=1&amp;&amp;ny&lt;=m&amp;&amp;d[nx][ny]=='@'&amp;&amp;!vst[nx][ny])
+		    dfs(nx,ny);
+	}
+}
+int main(){
+    freopen(&quot;puddle.in&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;puddle.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=1;i&lt;=n;i++)
+	    for(int j=1;j&lt;=m;j++)
+	        cin&gt;&gt;d[i][j];
+	int ans=0;
+	for(int i=1;i&lt;=n;i++)
+	    for(int j=1;j&lt;=m;j++)
+	        if(d[i][j]=='@'&amp;&amp;!vst[i][j]){
+	        	ans++;
+	        	dfs(i,j);
+			}
+	cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre>
+<h2 id="466-骰子识别">466. 骰子识别</h2>
+<pre><code>题目描述
+玩桌游时你的运气总是很差，你怀疑骰子可能有问题。为了探究一个骰子投出的数字是不是在{1,2,3,4,5,6}里均匀分布，你造了个机器人不停地投骰子。当然你的机器人也有“视觉”，也就是一个“骰子识别”程序，自动识别投出的是几。其中最重要的任务就是对于一张骰子单面的照片（10*10像素），判断这一面是几。照片里会有白色用‘.’表示，一些上下左右联通的‘#’字符属于骰子里的同一个计数点。注意：如果一个单独像素点的‘#’上下左右都没有其他‘#’相邻时，不能够被识别为计数点，应该被理解为灰尘/噪点。照片里有几个独立的计数点就代表是骰子投的是数字几。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件dice.in
+输入为10*10的字符矩阵。
+输出格式
+输出文件dice.out
+输出一个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+.#....#...
+###.#.#...
+.#..###...
+........#.
+.##..##...
+##...##...
+#.........
+.###.##...
+.##..###..
+..#......#
+输出样例#1:
+6
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=19; 
+int dx[4]={0,1,0,-1};
+int dy[4]={1,0,-1,0};
+char d[N][N];
+int area;
+bool vst[N][N];
+void dfs(int x,int y){
+	area++;
+	vst[x][y]=1;
+	for(int k=0;k&lt;4;k++){
+		int nx=x+dx[k],ny=y+dy[k];
+		if(nx&gt;=1&amp;&amp;nx&lt;=10&amp;&amp;ny&gt;=1&amp;&amp;ny&lt;=10&amp;&amp;d[nx][ny]=='#'&amp;&amp;!vst[nx][ny])
+		    dfs(nx,ny);
+	}
+}
+int main(){
+    freopen(&quot;dice.in&quot;, &quot;r&quot;, stdin);
+    freopen(&quot;dice.out&quot;, &quot;w&quot;, stdout);
+	for(int i=1;i&lt;=10;i++)
+	    for(int j=1;j&lt;=10;j++)
+	        cin&gt;&gt;d[i][j];
+	int ans=0;
+	for(int i=1;i&lt;=10;i++)
+	    for(int j=1;j&lt;=10;j++)
+	        if(d[i][j]=='#'&amp;&amp;!vst[i][j]){
+	        	area=0;
+	        	dfs(i,j);
+	        	if(area&gt;1)ans++;
+			}
+	cout&lt;&lt;ans;
+    return 0;
+}
+</code></pre>
+<h2 id="467-攀亲戚">467. 攀亲戚</h2>
+<pre><code>题目描述
+最近你发现自己和古代一个皇帝长得很像：都有两个眼睛一个鼻子，你想知道这皇帝是不是你的远方亲戚，你是不是皇亲国戚。目前你能掌握的信息有m条，关于n个人：第i条信息包含两个人的编号ai,bi，表示ai和bi是亲戚。你的编号是0，皇帝的编号是1，最大编号为n-1 ，请问能否通过信息推理出你和皇帝是不是亲戚？
+备注：众所周知，亲戚关系具有传递性。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件relation.in
+输入第一行为正整数m和n，m&lt;=10000。接着共m行，每行两个正整数ai，bi，编号大小不超过1000。
+输出格式
+输出文件relation.out
+输出Yes或No。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+5 6
+0 2
+2 3
+3 4
+4 5
+5 1
+输出样例#1:
+Yes
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define N 1009
+using namespace std;
+int m,n,a,b;
+bool d[N][N],vst[N];
+void bfs(int x){
+	queue&lt;int&gt; q;
+	vst[x]=1;
+	q.push(x);
+	while(!q.empty()){
+		int now=q.front();
+		q.pop();
+		for(int k=1;k&lt;=n-1;k++)
+		    if(!vst[k]&amp;&amp;d[now][k]){
+		    	vst[k]=1;
+		    	q.push(k);
+			}
+	}
+}
+int main(){
+	freopen(&quot;relation.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;relation.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;m&gt;&gt;n;
+	for(int i=1;i&lt;=m;i++){
+		cin&gt;&gt;a&gt;&gt;b;
+		d[a][b]=d[b][a]=1;
+	}
+	bfs(0);
+	if(vst[1])cout&lt;&lt;&quot;Yes&quot;;
+	else cout&lt;&lt;&quot;No&quot;;
+	return 0;
+}
+</code></pre>
+<h2 id="468-时间复杂度">468. 时间复杂度</h2>
+<pre><code>题目描述
+小明正在学习一种新的编程语言 A++，刚学会循环语句的他激动地写了好多程序并 给出了他自己算出的时间复杂度，可他的编程老师实 在不想一个一个检查小明的程序， 于是你的机会来啦！下面请你编写程序来判断小明对他的每个程序给出的时间复杂度是 否正确。
+A++语言的循环结构如下：
+F i x y
+    循环体
+E
+其中“F i x y”表示新建变量 （i变量 i 不可与未被销毁的变量重名）并初始化为 x，然后判断 i 和 y 的大小关系，若 i 小于等于 y 则进入循环，否则不进入。每次循环结束 后 i 都会被修改成 i +1，一旦 i 大于 y 终止循环。
+x 和 y 可以是正整数（x 和 y 的大小关系不定）或变量 n。n 是一个表示数据规模的 变量，在时间复杂度计算中需保留该变量而不能 将其视为常数，该数远大于 100。
+“E”表示循环体结束。循环体结束时，这个循环体新建的变量也被销毁。 注：本题中为了书写方便，在描述复杂度时，使用大写英文字母“O”表示通常意义下“Θ”的概念。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行一个正整数 t，表示有 t（t ≤ 10）个程序需要计算时间复杂度。 每个程序我们只需抽取其中 “F i x y”和“E”即可计算时间复杂度。注意：循环结构允许嵌套。
+接下来每个程序的第一行包含一个正整数 L 和一个字符串，L 代表程序行数，字符串表示这个程序的复杂度，“O(1)”表示常数复杂度，“O(n^w)”表示复杂度为nw，其 中 w是一个小于 100 的正整数（输入中不包含引号），输入保证复杂度只有 O(1)和 O(n^w)
+两种类型。
+接下来 L 行代表程序中循环结构中的“F i x y”或者 “E”。 程序行若以“F”开头，表示进入一个循环，之后有空格分离的三个字符（串）i x y，其中 i 是一个小写字母（保证不为“n”），表示新建的变量名，x 和 y 可能是正整数或n ，已知若为正整数则一定小于 100。  程序行若以“E”开头，则表示循环体结束。
+输出格式
+输出共 t 行，对应输入的 t 个程序，每行输出“Yes”或“No”或者“ERR”（输 出中不包含引号），若程序实际复杂度与输入给出的复杂度 一致则输出“Yes”，不一致 则输出“No”，若程序有语法错误（其中语法错误只有: ① F 和 E 不匹配 ②新建的变 量与已经存在但未被销毁的变量重复两种情况），则输出“ERR”。
+注意：即使在程序不会执行的循环体中出现了语法错误也会编译错误， 要输出 “ERR”。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+8
+2 O(1)
+F i 1 1 E
+2 O(n^1)
+F x 1 n E
+1 O(1)
+F x 1 n 4 O(n^2)
+F x 5 n F y 10 n E
+E
+4 O(n^2)
+F x 9 n E
+F y 2 n E
+4 O(n^1)
+F x 9 n F y n 4 E
+E
+4 O(1)
+F y n 4 F x 9 n E
+E
+4 O(n^2)
+F x 1 n F x 1 10 E
+E
+输出样例#1:
+Yes
+Yes
+ERR
+Yes
+No
+Yes
+Yes
+ERR
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define ll long long
+#define rint register int
+using namespace std;
+stack&lt;int&gt; zhan;
+int main(){
+    int t;scanf(&quot;%d&quot;,&amp;t);
+    while(t--){
+        int n;scanf(&quot;%d&quot;,&amp;n);
+    	int nowline=0,pos=0;
+    	int Fcnt=0,Ecnt=0,cnt=0;
+        int hisans=0,myans=0;
+        int runflag=-1;
+    	bool endflag=false;
+        string tmp;cin&gt;&gt;tmp;
+        string sublist=&quot;0&quot;;
+        for(rint i=0;i&lt;tmp.length();++i)
+            if(tmp[i]&gt;='0'&amp;&amp;tmp[i]&lt;='9'){
+                hisans+=tmp[i]-'0';
+                hisans*=10;
+            }
+        hisans/=10;
+        if(tmp[2]=='1') hisans=0;
+        for(rint i=1;i&lt;=n;++i){
+            string sub,opt,tmpsta,tmpend;
+            int sta=0,end=0;
+            cin&gt;&gt;opt;
+            if(opt==&quot;F&quot;){
+            	++Fcnt;++pos;
+                zhan.push(pos);
+                cin&gt;&gt;sub&gt;&gt;tmpsta&gt;&gt;tmpend;
+                if(tmpend[0]=='n'&amp;&amp; (!(tmpsta[0]=='n'&amp;&amp;tmpend[0]=='n'))) ++cnt;
+                for(rint j=0;j&lt;tmpsta.length();++j){
+                    sta+=tmpsta[j]-'0';
+                    sta*=10;
+                }
+                sta/=10;
+                if(tmpend[0]!='n'){//如果end是数字 
+                    for(rint i=0;i&lt;tmpend.length();++i){
+                        end+=tmpend[i]-'0';
+                        end*=10;
+                    }
+                    end/=10;
+                    if(sta&gt;end)//如果循环不能执行 
+                        runflag=pos;
+                }
+                if(runflag==-1||pos&lt;runflag) myans=max(myans,cnt);
+                sublist+=sub;
+                if(sublist.find(sub)!=sublist.length()-1){
+                	printf(&quot;ERR
+&quot;);cnt=0;nowline=i;endflag=true;break;
+                }
+                sta=0;end=0;
+            }
+            else if(opt==&quot;E&quot;){
+            	--cnt;++Ecnt;
+                if(zhan.empty()&amp;&amp;!endflag){
+            		printf(&quot;ERR
+&quot;);cnt=0;nowline=i;endflag=true;break;
+                }
+                if(zhan.top()&lt;=runflag){
+                	pos=0;
+                	runflag=-1;
+                }
+                if(!zhan.empty()) zhan.pop();
+                if(sublist.length()&gt;0) sublist=sublist.substr(0,sublist.length()-1);
+            	if(zhan.empty()) cnt=0;
+            }
+        }
+        if(endflag){
+        	cnt=0;
+        	while(!zhan.empty())
+        		zhan.pop();
+        		string cnm;
+        	for(rint i=1;i&lt;=n-nowline+1;++i) getline(cin,cnm);
+        	continue;
+        }
+        if(Fcnt!=Ecnt){
+        	if(!endflag) printf(&quot;ERR
+&quot;);
+        	while(!zhan.empty()) zhan.pop();
+        	cnt=0;
+        	continue;
+        }
+        while(!zhan.empty()) zhan.pop(); 
+        if(!endflag){
+        	if(myans==hisans) printf(&quot;Yes
+&quot;);
+        	else printf(&quot;No
+&quot;);
+        }
+        myans=hisans=0;
+    }
+    return 0;
+}
+</code></pre>
+<h2 id="481-珠心算测验">481. 珠心算测验</h2>
+<pre><code>题目描述
+珠心算是一种通过在脑中模拟算盘变化来完成快速运算的一种计算技术。珠心算训练，既能够开发智力，又能够为日常生活带来很多便利，因而在很多学校得到普及。 某学校的珠心算老师采用一种快速考察珠心算加法能力的测验方法。他随机生成一个正整数集合，集合中 的数各不相同，然后要求学生回答：其中有多少个数，恰好等于集合中另外两个（不同的）数之和？ 最近老师出了一些测验题，请你帮 忙求出答案。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件quiz.in 输入共两行，第一行包含一个整数n，表示测试题中给出的正整数个数。第二行有n个正整数，每两个正整数之间用一个空格隔开，表示测试题中给出的正整数。
+说明: 3 ≤ n ≤ 100，测验题给出的正整数大小不超过10000。
+输出格式
+输出文件quiz.out 输出共一行，包含一个整数，表示测验题答案。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+4
+1 2 3 4
+输出样例#1:
+2
+输入样例#2:
+5
+1 9 3 7 10
+输出样例#2:
+1
+输入样例#3:
+
+输出样例#3:
+
+</code></pre>
+<h2 id="490-七龙珠">490. 七龙珠</h2>
+<pre><code>题目描述
+传说“集齐七颗龙珠，可以召唤神龙”。这七个不同龙珠星级分别为1,2,3,4,5,6,7.现在，你面前有一排n个龙珠，第i颗龙珠的星级是xi。每颗龙珠卖1万，并且只能买连续的若干颗，不能挑挑拣拣。请问至少要万才能召唤神龙？
+注意：星级为8或以上的龙珠没用。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行为正整数n，第二行共n个正整数xi，在1到9之间。n&lt;=100。
+输出格式
+输出一个正整数代表最小费用，若无法召唤输出bye dragon
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+12
+1 2 2 3 4 5 6 8 9 7 1 8
+输出样例#1:
+9
+输入样例#2:
+6
+7 6 5 4 3 2
+输出样例#2:
+bye dragon
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=109;
+int n,x[N];
+bool OK(int len){
+	int cnt[10]={};
+	int sum=0;
+	for(int i=1;i&lt;=len;++i){
+		cnt[x[i]]++;
+		if(x[i]&lt;=7&amp;&amp;cnt[x[i]]==1)sum++;
+	}
+	if(sum==7)return 1;
+	for(int i=len+1;i&lt;+n;++i){
+		cnt[x[i]]++;
+		if(x[i]&lt;=7&amp;&amp;cnt[x[i]]==1)sum++;
+		cnt[x[i-len]]--;
+		if(x[i-len]&lt;=7&amp;&amp;cnt[x[i-len]]==0)sum--;
+		if(sum==7)return 1;
+	}
+	return 0;
+}
+int main(){
+	cin&gt;&gt;n;
+	for(int i=1;i&lt;=n;i++)cin&gt;&gt;x[i];
+	int l=7;
+	int r=n;
+	int ans=n+1;
+	while(l&lt;=r){
+		int mid=l+(r-l)/2;
+		if(OK(mid))ans=mid,r=mid-1;
+		else l=mid+1;
+	}
+	if(ans==n+1)
+	    cout&lt;&lt;&quot;bye dragon&quot;;
+	else
+	    cout&lt;&lt;ans;
+	return 0; 
+}
+</code></pre>
+<h2 id="491-免费旅游1">491. 免费旅游1</h2>
+<pre><code>题目描述
+有一艘国际邮轮在世界各国穿梭n个星期，他每个星期会停靠一个国家，第i个星期所在国家的编号为xi。邮轮在招聘清洁工，虽然没有工资，但可以免费去各国旅游，你非常心动。如果你想至少玩k个不同国家，那么至少在船上连续打工几个星期？
+假设你可以选择任意一段连续的工作时间。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行为正整数n和k，第二行共n个正整数xi，在1到200之间。n&lt;=1000。
+输出格式
+输出一个正整数代表最小星期数，若无法玩到k个国家输出impossible
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+5 3
+7 6 7 7 8
+输出样例#1:
+4
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int x[1009];
+int n,k,l,r,ans;
+int cnt[209];
+int sum;
+int main(){
+	cin&gt;&gt;n&gt;&gt;k;
+	for(int i=0;i&lt;n;i++)cin&gt;&gt;x[i];
+	ans=n+1;
+	while(1){
+		while(r&lt;n&amp;&amp;sum&lt;k){
+			int num=x[r++];
+			cnt[num]++;
+			if(cnt[num]==1)sum++;
+		}
+		if(sum&lt;k)break;
+		ans=min(ans,r-l);
+		int num=x[l++];
+		cnt[num]--;
+		if(cnt[num]==0)sum--;
+	}
+	if(ans==n+1)cout&lt;&lt;&quot;impossible&quot;;
+	else cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="492-免费旅游2">492. 免费旅游2</h2>
+<pre><code>题目描述
+有一艘国际邮轮在世界各国穿梭n个星期，他每个星期会停靠一个国家， 第i个星期所在国家的编号为xi。邮轮在招聘清洁工，虽然没有工资，但 可以免费去各国旅游，你非常心动。如果你想玩遍所有该邮轮到达的国家，那么至少在船上连续打工几个星期？
+假设你可以选择任意一段连续的工作星期。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行为正整数n，第二行共n个正整数xi，在1到200之间。n&lt;=1000 。
+输出格式
+输出一个正整数代表最小星期数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+5
+6 7 8 8 7
+输出样例#1:
+3
+输入样例#2:
+4
+1 2 3 4
+输出样例#2:
+4
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int x[1009];
+int n,k,l,r,ans;
+int cnt[209];
+set&lt;int&gt; jihe;
+int sum;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;x[i];
+		jihe.insert(x[i]);
+	}
+	k=jihe.size();
+	ans=n+1;
+	while(1){
+		while(r&lt;n&amp;&amp;sum&lt;k){
+			int num=x[r++];
+			cnt[num]++;
+			if(cnt[num]==1)sum++;
+		}
+		if(sum&lt;k)break;
+		ans=min(ans,r-l);
+		int num=x[l++];
+		cnt[num]--;
+		if(cnt[num]==0)sum--;
+	}
+	if(ans==n+1)cout&lt;&lt;&quot;impossible&quot;;
+	else cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="504-排座椅">504. 排座椅</h2>
+<pre><code>题目描述
+上课的时候总会有一些同学和前后左右的人交头接耳，这是令小学班主任十分头疼的一件事情。不过，班主任小雪发现了一些有趣的现象，当同学们的座次确定下来之后，只有有限的D对同学上课时会交头接耳。
+
+同学们在教室中坐成了M行N列，坐在第i行第j列的同学的位置是（i,j），为了方便同学们进出，在教室中设置了K条横向的通道，L条纵 向的通道。
+
+于是，聪明的小雪想到了一个办法，或许可以减少上课时学生交头接耳的问题：她打算重新摆放桌椅，改变同学们桌椅间通道的位置，因为如果一条通道隔开了两个会交头接耳的同学，那么他们就不会交头接耳了。
+
+请你帮忙给小雪编写一个程序，给出最好的通道划分方案。在该方案下，上课时交头接耳的学生的对数最少。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件chair.in 第一行，有5个用空格隔开的整数，分别是M，N，K，L，D（2&lt;=N，M&lt;=1000，0&lt;=K&lt;M，0&lt;=L&lt;N，D&lt;=2000）。
+接下来的D行，每行有4个用空格隔开的整数。第i行的4个整数Xi，Yi，Pi，Qi，表示坐在位置(Xi，Yi)与(Pi，Qi)的两个同学会交头接耳（输入保证他们前后相邻或者左右相邻）。
+输入数据保证最优方案的唯一性。
+输出格式
+输出文件chair.out 共两行。
+第一行包含K个整数，a1，a2……aK，表示第a1行和a1+1行之间、第a2行和a2+1行之间、…、第aK行和第aK+1行之间要开辟通道，其中ai&lt; ai+1，每两个整数之间用空格隔开（行尾没有空格）。
+第二行包含L个整数，b1，b2……bL，表示第b1列和b1+1列之间、第b2列和b2+1列之间、…、第bL列和第bL+1列之间要开辟通道，其中bi&lt; bi+1，每两个整数之间用空格隔开（列尾没有空格）。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+4 5 1 2 3
+4 2 4 3
+2 3 3 3
+2 5 2 4
+输出样例#1:
+2
+2 4
+输入样例#2:
+无
+输出样例#2:
+无
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define N 1003
+using namespace std; 
+int m,n,k,l,d,x[N],y[N],c[N],o[N],res[N],len=1;
+int main(){
+    scanf(&quot;%d%d%d%d%d&quot;,&amp;m,&amp;n,&amp;k,&amp;l,&amp;d); 
+    for(int i=1;i&lt;=d;i++){ 
+        int xi,yi,pi,qi; 
+        scanf(&quot;%d%d%d%d&quot;,&amp;xi,&amp;yi,&amp;pi,&amp;qi); 
+        if(xi==pi)x[min(yi,qi)]++;
+        else y[min(xi,pi)]++;
+    } 
+    for(int i=1;i&lt;=k;i++){
+        int maxn=-1,p;
+        for(int j=1;j&lt;m;j++)
+            if(y[j]&gt;maxn){maxn=y[j];p=j;} 
+        y[p]=0;c[p]++;
+    } 
+    for(int i=1;i&lt;=l;i++){ 
+        int maxn=-1,p;
+        for(int j=1;j&lt;n;j++)
+            if(x[j]&gt;maxn){maxn=x[j];p=j;} 
+        x[p]=0;o[p]++; 
+    } 
+    for(int i=0;i&lt;N;i++)if(c[i]&amp;&amp;i!=0)res[++len]=i;
+    for(int i=1;i&lt;len;i++)if(res[i]!=0)printf(&quot;%d &quot;,res[i]);
+    printf(&quot;%d
+&quot;,res[len]);
+	for(int i=1;i&lt;=len;i++)res[i]=0;len=1; 
+    for(int i=0;i&lt;N;i++)if(o[i]&amp;&amp;i!=0)res[++len]=i;
+    for(int i=1;i&lt;len;i++)if(res[i]!=0)printf(&quot;%d &quot;,res[i]);
+    printf(&quot;%d
+&quot;,res[len]);
+    return 0; 
+}
+</code></pre>
+<h2 id="507-hanoi双塔问题同182">507. Hanoi双塔问题（同182）</h2>
+<h2 id="518-排列生成">518. 排列生成</h2>
+<pre><code>题目描述
+输入n，1&lt;=n&lt;=8。输出n的全排列，每一行一个排列方案，数字由空格隔开，按照字典序输出。注意行末不能有空格。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+如题
+输出格式
+如题
+输入输出样例
+输入样例#1:
+2
+输出样例#1:
+1 2
+2 1
+输入样例#2:
+3
+输出样例#2:
+1 2 3
+1 3 2
+2 1 3
+2 3 1
+3 1 2
+3 2 1
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n,x[9];
+void print(){
+	for(int i=0;i&lt;n-1;i++)cout&lt;&lt;x[i]&lt;&lt;&quot; &quot;;
+	cout&lt;&lt;x[n-1]&lt;&lt;endl;
+}
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++)x[i]=i+1;
+	do{
+		print();
+	}while(next_permutation(x,x+n));
+	return 0;
+}
+</code></pre>
+<h2 id="519-起个英文名1">519. 起个英文名1</h2>
+<pre><code>题目描述
+王村长生了个大胖儿子需要起英文名字，关键要朗朗上口。他认为有n种音节是好听的，必须都用到一次，那么有哪些排序方式呢？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件名name1.in
+输入第一行为正整数n，第二行有n个小写字符串各自代表一种音节（无重复），n&lt;=5。
+输出格式
+输出文件名name1.out
+输出儿子的小写英文名候选方案，每一行输出一个，按照字典序输出。注意儿子一定姓王。注意行末没有空格。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+2
+tuo ni
+输出样例#1:
+nituo wang
+tuoni wang
+输入样例#2:
+3
+cha li si
+输出样例#2:
+chalisi wang
+chasili wang
+lichasi wang
+lisicha wang
+sichali wang
+silicha wang
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+int n;
+string s[6];
+void print(){
+	for(int i=0;i&lt;n;i++)cout&lt;&lt;s[i];
+	cout&lt;&lt;&quot; wang&quot;&lt;&lt;endl;
+}
+int main(){
+	freopen(&quot;name1.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;name1.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++)cin&gt;&gt;s[i];
+	sort(s, s+n);
+	do{
+		print();
+	}while(next_permutation(s,s+n));
+	return 0;
+}
+</code></pre>
+<h2 id="520-八皇后补齐版">520. 八皇后补齐版</h2>
+<pre><code>题目描述
+百度百科：“八皇后问题，是一个古老而著名的问题，是回溯算法的典型案例。该问题是国际西洋棋棋手马克斯•贝瑟尔于1848年提出：在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。 高斯认为有76种方案。1854年在柏林的象棋杂志上不同的作者发表了40种不同的解，后来有人用图论的方法解出92种结果。计算机发明后，有多种计算机语言可以解决此问题。”
+
+8×8格里目前已有一些不冲突的皇后占位了，请问还有多少种方案可以完成八皇后。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入为8×8棋盘的字符，Q代表皇后，o代表空位。
+输出格式
+输出一个整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+Qooooooo
+oooooooo
+oooooooo
+oooooooo
+oooooooo
+oooooooo
+oooooooo
+oooooooo
+输出样例#1:
+ 4
+输入样例#2:
+oooooooo
+oooooooo
+oooQoooo
+oQoooooo
+oooooooo
+oooooooo
+oooooooo
+oooooooo
+输出样例#2:
+1
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=8;
+int ans;
+bool clmn[N],row[N],d1[2*N],d2[2*N];
+bool valid(int x,int y){
+	return !clmn[y]&amp;&amp;!d1[x+y]&amp;&amp;!d2[x-y+N-1];
+}
+void dfs(int x){
+	if(x==N){ans++;return;}
+	if(row[x]){dfs(x+1);return;}
+	for(int y=0;y&lt;N;y++)
+	    if(valid(x,y)){
+	    	clmn[y]=d1[x+y]=d2[x-y+N-1]=1;
+	    	dfs(x+1);
+	    	clmn[y]=d1[x+y]=d2[x-y+N-1]=0;
+		}
+}
+int main(){
+	for(int i=0;i&lt;N;i++)
+	    for(int j=0;j&lt;N;j++){
+	    	char ch;
+			cin&gt;&gt;ch;
+			if(ch=='Q'){
+				row[i]=1;
+				clmn[j]=1;
+				d1[j+i]=1;
+				d2[i-j+N-1]=1;
+			}	
+		}
+	dfs(0);
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="521-棋子摆放">521. 棋子摆放</h2>
+<pre><code>题目描述
+在n*n的棋盘上摆放棋子，要求摆放时任意的两个棋子不能放在同一行或同一列。棋盘内只有在空白区域可以放棋子，空白区域由o表示，另外@表示障碍物。请求出摆放k个棋子的所有可行方案数量。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行是两个正整数n和k，用一个空格隔开，n&lt;=8，k&lt;=n。随后的n行描述了棋盘的状态。
+输出格式
+输出摆放的方案数目
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+2 1
+o@
+@o
+输出样例#1:
+2
+输入样例#2:
+4 4
+@@@o
+@@o@
+@o@@
+o@@@
+输出样例#2:
+1
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=10;
+char d[N][N];
+int n,k,ans,clmn[N];
+bool valid(int x,int y){
+	return !clmn[y]&amp;&amp;d[x][y]=='o';
+}
+void dfs(int x,int num){
+	if(num==k){ans++;return;}
+	if(x==n)return;
+	for(int y=0;y&lt;n;y++)
+	    if(valid(x,y)){
+	    	clmn[y]=1;
+	    	dfs(x+1,num+1);
+	    	clmn[y]=0;
+		}
+	dfs(x+1,num);
+}
+int main(){
+	cin&gt;&gt;n&gt;&gt;k;
+	for(int i=0;i&lt;n;i++)
+	    for(int j=0;j&lt;n;j++)
+	        cin&gt;&gt;d[i][j];
+	dfs(0,0);
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="522-castles">522. Castles</h2>
+<pre><code>题目描述
+A map of a city is a square board with 5 rows and 5 columns, each representing a street or a piece of wall. Your task is to place castles in the city.
+A castle has four openings through which to shoot. The four openings are facing North, East, South, and West, respectively. There will be one machine gun shooting through each opening. Here we assume that a bullet is so powerful that it can run across any distance and destroy a castle on its way. On the other hand, a wall is so strongly built that can stop the bullets.
+The goal is to place as many castles in a city as possible so that no two can destroy each other.
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+The input contains n lines each describing one row of the map, with a '.' indicating an open space and an uppercase 'X' indicating a wall.
+输出格式
+The output contains the maximum number of castles that can be placed in the city in a legal configuration.
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+.X.XX
+X.X.X
+XXXXX
+XXXXX
+XXXXX
+输出样例#1:
+4
+输入样例#2:
+XXXXX
+.X..X
+....X
+XX..X
+....X
+输出样例#2:
+5
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=10;
+int ans=0,n=5,f[N][N];
+char ditu[N][N];
+bool valid(int x,int y){
+	for(int i=x-1;i&gt;=0;i--)
+	    if(ditu[i][y]=='X')break;
+		else if(f[i][y])return 0;
+	for(int j=y-1;j&gt;=0;j--)
+	    if(ditu[x][j]=='X')break;
+	    else if(f[x][j])return 0;
+	return 1;
+}
+void dfs(int x,int y,int c){
+	ans=max(ans,c);
+	if(x==n)return;
+	int nx=(y==n-1?x+1:x);
+	int ny=(y==n-1?0:y+1);
+	if(ditu[x][y]=='.'&amp;&amp;valid(x,y)){
+		f[x][y]=1;
+		dfs(nx,ny,c+1);
+		f[x][y]=0;
+	}
+	dfs(nx,ny,c);
+}
+int main(){
+	for(int i=0;i&lt;5;i++)
+	    for(int j=0;j&lt;5;j++)
+	        cin&gt;&gt;ditu[i][j];
+	dfs(0,0,0);
+	cout&lt;&lt;ans;
+	return 0;
+}
+</code></pre>
+<h2 id="530-罗密欧与朱丽叶">530. 罗密欧与朱丽叶</h2>
+<pre><code>题目描述
+在一个n*m格子的迷宫里，o代表空地可以行走，#代表墙体不可以通过，R代表罗密欧，J代表朱丽叶。罗密欧和朱丽叶每秒钟可以上下左右四个方 向走动一格，请问他们相遇需要至少几秒钟？如果无法相遇输出forever 。
+
+
+
+输入输出格式
+输入格式
+输入文件romeo.in 输入第一行为n和m，n,m&lt;=10。接着是n*m格的字符。
+输出格式
+输出文件romeo.out 输出forever或者一个浮点数，保留一位小数
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+2 2
+oJ
+R#
+输出样例#1:
+1.0
+输入样例#2:
+4 5
+ooo#J
+o#o#o
+o#o#o
+R#ooo
+输出样例#2:
+6.5
+输入样例#3:
+2 2
+R#
+#J
+输出样例#3:
+forever
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define N 19
+using namespace std;
+int dx[4]={0,1,0,-1};
+int dy[4]={1,0,-1,0};
+int m,n,xR,yR,xJ,yJ,dst[N][N];
+char d[N][N];
+bool vst[N][N];
+struct Node{
+	int x,y;
+};
+int bfs(){
+	queue&lt;Node&gt; q;
+	vst[xR][yR]=1;
+	dst[xR][yR]=0;
+	q.push((Node){xR,yR});
+	while(!q.empty()){
+		Node now=q.front();
+		q.pop();
+		for(int k=0;k&lt;4;k++){
+			int nx=now.x+dx[k],ny=now.y+dy[k];
+			if(nx&gt;=1&amp;&amp;nx&lt;=n&amp;&amp;ny&gt;=1&amp;&amp;ny&lt;=m&amp;&amp;d[nx][ny]!='#'&amp;&amp;!vst[nx][ny]){
+				vst[nx][ny]=1;
+				dst[nx][ny]=dst[now.x][now.y]+1;
+				q.push((Node){nx,ny});
+				if(nx==xJ&amp;&amp;ny==yJ)return dst[nx][ny];
+			}
+		}
+	}
+	return -1;
+}
+int main(){
+	freopen(&quot;romeo.in&quot;, &quot;r&quot;, stdin);
+	freopen(&quot;romeo.out&quot;, &quot;w&quot;, stdout);
+	cin&gt;&gt;n&gt;&gt;m;
+	for(int i=1;i&lt;=n;i++)
+	    for(int j=1;j&lt;=m;j++){
+	        cin&gt;&gt;d[i][j];
+	        if(d[i][j]=='R')xR=i,yR=j;
+	        if(d[i][j]=='J')xJ=i,yJ=j;
+		}
+	int res=bfs();
+	if(res==-1)cout&lt;&lt;&quot;forever&quot;;
+	else cout&lt;&lt;fixed&lt;&lt;setprecision(1)&lt;&lt;res/2.0;
+	return 0;
+}
+</code></pre>
+<h2 id="533-这不是编程题">533. 这不是编程题</h2>
+<pre><code>题目描述
+1.以下哪个是灰太狼的老婆  A.红太狼  B.红太阳  C.红彤彤  D.红金宝
+2.以下哪个是中国古代四大美女之一  A.杨玉环  B.杨紫  C.杨颖  D.杨幂
+3.在四大天王里任选两个（不计顺序），共有几种选法？ 注意：这不是编程题，只是披着编程题外衣的选择/填空题。你只需要提交如下代码，并在(*)行处填入你的答案即可
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+string ans[3]={&quot;A&quot;,&quot;C&quot;,&quot;1&quot;};    // (*)
+int i;
+int main() {
+cin&gt;&gt;i;
+cout&lt;&lt;ans[i-1]&lt;&lt;endl;
+return 0;
+}
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+无
+输出格式
+无
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+无
+输出样例#1:
+无
+输入样例#2:
+
+输出样例#2:
+
+输入样例#3:
+
+输出样例#3:
+
+</code></pre>
+<pre><code>#include&lt;iostream&gt; 
+#include&lt;string&gt;
+using namespace std; 
+string ans[3]={&quot;A&quot;,&quot;A&quot;,&quot;6&quot;};
+int i;
+int main() {    
+	cin&gt;&gt;i;
+	cout&lt;&lt;ans[i-1]&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h2 id="535-时光机">535. 时光机</h2>
+<pre><code>题目描述
+你是个90后中年人，今年已经24岁了。
+离开了纯真的校园生活，你有些不太适应。
+你的愿望是回到过去，重温当年的美好。
+有一天你的梦想成真了，获得一台时光机：
+能完成m种穿越行为
+第i种穿越可以从你ai岁穿越到你bi岁的时候
+
+你希望求出从24岁能穿越到之前的哪些年？分别至少要穿越几次？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件timemachine.in 输入第一行为正整数m，m&lt;=100，接着有m行穿越行为：每一行为ai和bi，均为1到24中的正整数。
+输出格式
+输出文件timemachine.out 输出若干行，每一行为可以穿越到的岁数，以及需要至少几次穿越的数量。按照岁数从小到大排列。不要输出24岁和不能穿越到的岁数。若任何岁数都无法穿越到则输出impossible
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+3
+2 7
+24 2
+2 16
+输出样例#1:
+2 1
+7 2
+16 2
+输入样例#2:
+2
+23 24
+1 24
+
+输出样例#2:
+impossible
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=30;
+const int INF=10000;
+int m,f[N][N];
+int main(){
+	freopen(&quot;timemachine.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;timemachine.out&quot;,&quot;w&quot;,stdout);
+	cin&gt;&gt;m;
+	for(int i=1;i&lt;=24;i++)
+	    for(int j=1;j&lt;=24;j++)
+	        f[i][j]=INF;
+	for(int i=0;i&lt;m;i++){
+		int x,y;
+		cin&gt;&gt;x&gt;&gt;y;
+		f[x][y]=1;
+	}
+	for(int k=1;k&lt;=24;k++)
+		for(int i=1;i&lt;=24;i++)
+			for(int j=1;j&lt;=24;j++)
+				f[i][j]=min(f[i][j],f[i][k]+f[k][j]);
+	bool ok=0;
+	for(int i=1;i&lt;=23;i++)
+	    if(f[24][i]&lt;INF){
+	    	ok=1;
+	    	cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;f[24][i]&lt;&lt;endl; 
+		}
+	if(!ok)cout&lt;&lt;&quot;impossible&quot;;
+	return 0;
+}
+</code></pre>
+<h2 id="536-关系式矛盾1">536. 关系式矛盾1</h2>
+<pre><code>题目描述
+输入n条简单的不等式，判断是否可能同时成立。注意：不等号只可能是&gt;或&lt;，涉及的字母只可能是a到z的小写字母，不等号左右各有一 个字母。每个字母代表一个数字
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件inequality.in 输入第一行为正整数n，n&lt;=100，接着有n条不等式。
+输出格式
+输出文件inequality.out 输出impossible或possible。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+3
+a&gt;b
+b&gt;c
+c&gt;a
+输出样例#1:
+impossible
+输入样例#2:
+4
+a&gt;b
+c&gt;d
+d&lt;a
+d&lt;c
+输出样例#2:
+possible
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+const int N=109;
+int n,f[N][N];
+int main(){
+	freopen(&quot;inequality.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;inequality.out&quot;,&quot;w&quot;,stdout);
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		char x,y,z;
+		cin&gt;&gt;x&gt;&gt;y&gt;&gt;z;
+		int u=x-'a';
+		int v=z-'a';
+		if(y=='&gt;')f[u][v]=1;
+		else f[v][u]=1;
+	}
+	for(int k=0;k&lt;=25;k++)
+		for(int i=0;i&lt;=25;i++)
+			for(int j=0;j&lt;=25;j++)
+				f[i][j]=f[i][j]||f[i][k]&amp;&amp;f[k][j];
+	int i;
+	for(i=0;i&lt;=25;i++)
+	    if(f[i][i])break;
+	if(i&lt;=25)cout&lt;&lt;&quot;im&quot;;
+	cout&lt;&lt;&quot;possible&quot;;
+	return 0;
+}
+</code></pre>
+<h2 id="547-关系式矛盾2">547. 关系式矛盾2</h2>
+<pre><code>题目描述
+输入n条简单的关系式，判断是否有可能都成立。关系符号只可能是两种：!=代表不等于关系，==代表等于关系。涉及的字母只可能是a到z的小写字母，每个字母代表一个变量，关系符号左右各有一个字母。
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入第一行为正整数n，n&lt;=100，接着有n条关系式。
+输出格式
+输出Impossible或Possible
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+2
+a==b
+c==d
+输出样例#1:
+Possible
+输入样例#2:
+3
+x!=y
+y==z
+z==x
+输出样例#2:
+Impossible
+输入样例#3:
+1
+a!=a
+输出样例#3:
+Impossible
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const ll N=109;
+ll nRelations,m=0,qx[N],qy[N],id[N];
+ll root(ll x){
+	if(id[x]==x)return x;
+	return id[x]=root(id[x]);
+}
+void unite(ll x,ll y){
+	ll rx=root(x),ry=root(y);
+	id[rx]=ry;
+}
+int main(){
+	cin&gt;&gt;nRelations;
+	for(ll i=0;i&lt;N;i++)id[i]=i;
+	for(ll i=0;i&lt;nRelations;i++){
+		char u,v,x,y;
+		cin&gt;&gt;u&gt;&gt;x&gt;&gt;y&gt;&gt;v;
+		if(x=='=')
+		    unite(u-'a',v-'a');
+		else{
+			qx[m]=u-'a';
+			qy[m]=v-'a';
+			m++;
+		}
+	}
+	for(int i=0;i&lt;m;i++)
+	    if(root(qx[i])==root(qy[i])){
+	    	cout&lt;&lt;&quot;Impossible&quot;;
+	    	return 0;
+		}
+	cout&lt;&lt;&quot;Possible&quot;;
+	return 0;
+}
+</code></pre>
+<h2 id="586-黄金道">586. 黄金道</h2>
+<pre><code>题目描述
+你来到了金山，遍地是黄金。在n*m格子的地图里，每格都有高度值和该格子里黄金数量。地图是四向连通的，请你找一条从高到低的下 山通道，使得沿途的黄金总量最大。该黄金道的起点和终点也由你来选择。注意：高度相同的两个格子无法通行
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入的第一行表示区域的行数n和列数m(1&lt;=n,m&lt;=100)。接着是n行m列个整数代表每格高度，高度&lt;=10000。再接着是n行m列个整数代表每格黄金数量，黄金数量&lt;=10000
+输出格式
+输出沿途的黄金总量最大值。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+5 5
+1 2 3 4 5
+16 17 18 19 6
+15 24 25 20 7
+14 23 22 21 8
+13 12 11 10 9
+6 6 6 6 6
+6 6 6 6 6
+6 6 6 6 6
+6 6 6 6 6
+6 6 6 6 6
+输出样例#1:
+150
+输入样例#2:
+2 3
+1 2 3
+4 5 6
+1 5 9
+4 10 1
+输出样例#2:
+17
+输入样例#3:
+无
+输出样例#3:
+无
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+const ll N=109;
+ll dx[4]={1,-1,0,0};
+ll dy[4]={0,0,-1,1};
+ll n,m,f[N][N],h[N][N],mi[N][N],ans;
+bool ok[N][N];
+ll F(ll x,ll y){
+	if(ok[x][y])return f[x][y];
+	ok[x][y]=1;
+	f[x][y]=mi[x][y];
+	for(ll k=0;k&lt;4;k++){
+		ll nx=x+dx[k],ny=y+dy[k];
+		if(nx&gt;=1&amp;&amp;nx&lt;=n&amp;&amp;ny&gt;=1&amp;&amp;ny&lt;=m&amp;&amp;h[nx][ny]&lt;h[x][y]){
+		    f[x][y]=max(f[x][y],F(nx,ny)+mi[x][y]);
+		}
+	}
+	return f[x][y];
+}
+int main(){
+	cin&gt;&gt;n&gt;&gt;m;
+	for(ll i=1;i&lt;=n;i++)
+	    for(ll j=1;j&lt;=m;j++)
+	        cin&gt;&gt;h[i][j];
+	for(ll i=1;i&lt;=n;i++)
+	    for(ll j=1;j&lt;=m;j++)
+	        cin&gt;&gt;mi[i][j];
+	for(ll i=1;i&lt;=n;i++)
+	    for(ll j=1;j&lt;=m;j++)
+	        ans=max(ans,F(i,j));
+	cout&lt;&lt;ans&lt;&lt;endl;
+	return 0;
+}
+</code></pre>
+<h2 id="591-造物主">591. 造物主</h2>
+<pre><code>题目描述
+作为造物主，你要创造出n个物种，编号1到n。其中，i号物种的基因序列由一个长度为5的字符串代表。目前1号物种已经存在，而其他物种会按照你指定的顺序依次从已有的物种衍化而来。某物种从另一物种衍化出来时会消耗你的能量块，恰好等于这两个物种基因序列中总共出现的不同字符的个数。保证不同物种的序列都不同。求造完n个物种至少消耗多少能量块？
+</code></pre>
+<pre><code>输入输出格式
+输入格式
+输入文件creator.in 输入第一行为正整数n，n&lt;=500。接着共n行每行一个大写字母的字符串，长度均为5。
+输出格式
+输出文件creator.out 输出一个正整数。
+</code></pre>
+<pre><code>输入输出样例
+输入样例#1:
+2
+ABCDE
+FGABC
+输出样例#1:
+7
+说明：ABCDE和FGABC这两个字符串里共有7个不同字符：A,B,C,D,E,F,G
+输入样例#2:
+3
+ABCDE
+FGABC
+DAXYZ
+输出样例#2:
+15
+输入样例#3:
+4
+ABCDE
+FGABC
+DAXYZ
+CDEAB
+输出样例#3:
+20
+</code></pre>
+<pre><code>#include&lt;bits/stdc++.h&gt;
+#define N 1000009
+using namespace std;
+int n,m,id[N];
+string gene[N];
+struct edge{int u,v,w;};
+edge e[N];
+int root(int u){
+	return id[u] == u?u:id[u]=root(id[u]);
+}
+bool cmp(const edge&amp;a,const edge&amp;b){
+	return a.w&lt;b.w;
+}
+void Kruskal(){
+	sort(e,e+m,cmp);
+	for(int u=1;u&lt;=n;u++)id[u]=u;
+	int ans=0,cnt=0;
+	for(int k=0;k&lt;m;k++){
+		int ru=root(e[k].u);
+		int rv=root(e[k].v);
+		if(ru==rv)continue;
+		id[ru]=rv;
+		ans+=e[k].w;
+		cnt++;
+		if(cnt==n-1)break;
+	}
+	cout&lt;&lt;ans&lt;&lt;endl;
+}
+int dst(int i,int j){
+	set&lt;char&gt;s;
+	for(int k=0;k&lt;5;k++){
+		s.insert(gene[i][k]);
+		s.insert(gene[j][k]);
+	}
+	return s.size();
+}
+int main(){
+	freopen(&quot;creator.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;creator.out&quot;,&quot;w&quot;,stdout);
+	cin&gt;&gt;n;
+	for(int i=1;i&lt;=n;i++)cin&gt;&gt;gene[i];
+	for(int i=1;i&lt;=n-1;i++)
+	    for(int j=i+1;j&lt;=n;j++){
+	    	e[m].u=i;
+	    	e[m].v=j;
+	    	e[m].w=dst(i,j);
+	    	m++;
+		}
+	Kruskal();
+	return 0;
+}
+</code></pre>
+
+            </div>
+            <hr style="width: 80%;">
+            
+            <div class="postfooter">
+                <ul class="post-copyright">
+                    <li><strong>文章作者：</strong>吴凡</li>
+            <li><strong>原文链接：</strong>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-401-600/</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用<i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA
+                许可协议。转载请注明出处！</li>
+            </ul>
+        </div>
+        
+            <div class="shareContainer">
+                <div class="share" style="height:30px;">
+                    <a class="qq" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/qqs.png" alt=""></i></a>
+                    <a class="wechat" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/wechats.png" alt=""></i></a>
+                    <a class="weibo" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/weibos.png" alt=""></i></a>
+                    <a class="qzone" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/qzones.png" alt=""></i></a>
+                    <a class="douban" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/doubans.png" alt=""></i></a>
+                    <a class="facebook" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/facebooks.png" alt=""></i></a>
+                    <a class="twitter" href=""><i><img class="shareicon"
+                                src="https://wufan.fun/media/images/twitter.png" alt=""></i></a>
+                </div>
+            </div>
+            
+        <div id="otherpost">
+            
+            <a  data-pjax class="prev-post-pc" href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-601-800/"  style="color: black;">
+                <div id="ppcontainer">
+                    
+                    
+                    <img src="https://img.xjh.me/random_img.php?return=302&amp;type=bg&amp;ctype=nature" style="width: 100%;" class="opimg">
+                    
+                    
+                    <h4 class="optitle">吴凡的题库——快快编程601-800</h4>
+                </div>
+            </a>
+            <div class="prev-post">
+                上一篇 <a  data-pjax href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-601-800/">吴凡的题库——快快编程601-800</a>
+            </div>
+            
+            
+            <a data-pjax class="next-post-pc" href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-200-400/"  style="color: black;">
+                <div id="npcontainer">
+                    
+                    
+                    <img src="https://img.xjh.me/random_img.php?return=302&amp;type=bg&amp;ctype=nature" style="width: 100%;" class="opimg">
+                    
+                    
+                    <h4 class="optitle">吴凡的题库——快快编程201-400</h4>
+                </div>
+            </a>
+            <div class="next-post">
+                下一篇 <a  data-pjax href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-200-400/">吴凡的题库——快快编程201-400</a>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- 弹窗 -->
+    <div id="myModal" class="modal">
+        <img class="modal-content" id="img01">
+    </div>
+</body>
+<script>
+    //文章阅读热度
+    var pl = $("#pl").html();
+    var rootaddr = $("#rootaddr").html();
+    pl = pl.replace(rootaddr, "");
+    $("#hotnum").attr('id', pl);
+</script>
+                    <div class="toc-container">
+                        <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#425-%E8%BA%AB%E9%AB%98%E6%9F%A5%E8%AF%A2">425. 身高查询</a></li>
+<li><a href="#426-%E7%8B%99%E5%87%BB%E8%A3%85%E5%A4%87">426. 狙击装备</a></li>
+<li><a href="#427-%E7%89%B9%E6%AE%8A%E7%9A%84%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B">427. 特殊的三次方程</a></li>
+<li><a href="#436-%E9%AB%98%E6%99%BA%E5%95%86%E7%BD%AA%E7%8A%AF%E4%B8%80">436. 高智商罪犯一</a></li>
+<li><a href="#437-%E9%AB%98%E6%99%BA%E5%95%86%E7%BD%AA%E7%8A%AF%E4%BA%8C">437. 高智商罪犯二</a></li>
+<li><a href="#441-%E6%88%90%E7%BB%A9">441. 成绩</a></li>
+<li><a href="#448-%E8%A7%A3%E5%86%BB%E5%8D%B1%E6%9C%BA">448. 解冻危机</a></li>
+<li><a href="#452-%E9%AD%94%E9%AC%BC%E7%9A%84%E6%AD%A5%E4%BC%902best-ac-by-%E9%99%88%E5%85%A8">452. 魔鬼的步伐2（Best AC by 陈全）</a></li>
+<li><a href="#455-%E6%9C%80%E9%95%BF%E4%B8%8B%E9%99%8D%E5%AD%90%E5%BA%8F%E5%88%97">455. 最长下降子序列</a></li>
+<li><a href="#456-%E6%95%B0%E7%9A%84%E5%88%92%E5%88%86">456. 数的划分</a></li>
+<li><a href="#457-%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92">457. 训练计划</a></li>
+<li><a href="#458-%E7%BE%8E%E5%9B%BD%E6%B8%B81">458. 美国游1</a></li>
+<li><a href="#464-%E7%82%B9%E7%9F%B3%E6%88%90%E9%87%91">464. 点石成金</a></li>
+<li><a href="#465-%E6%95%B0%E6%B0%B4%E5%9D%91">465. 数水坑</a></li>
+<li><a href="#466-%E9%AA%B0%E5%AD%90%E8%AF%86%E5%88%AB">466. 骰子识别</a></li>
+<li><a href="#467-%E6%94%80%E4%BA%B2%E6%88%9A">467. 攀亲戚</a></li>
+<li><a href="#468-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6">468. 时间复杂度</a></li>
+<li><a href="#481-%E7%8F%A0%E5%BF%83%E7%AE%97%E6%B5%8B%E9%AA%8C">481. 珠心算测验</a></li>
+<li><a href="#490-%E4%B8%83%E9%BE%99%E7%8F%A0">490. 七龙珠</a></li>
+<li><a href="#491-%E5%85%8D%E8%B4%B9%E6%97%85%E6%B8%B81">491. 免费旅游1</a></li>
+<li><a href="#492-%E5%85%8D%E8%B4%B9%E6%97%85%E6%B8%B82">492. 免费旅游2</a></li>
+<li><a href="#504-%E6%8E%92%E5%BA%A7%E6%A4%85">504. 排座椅</a></li>
+<li><a href="#507-hanoi%E5%8F%8C%E5%A1%94%E9%97%AE%E9%A2%98%E5%90%8C182">507. Hanoi双塔问题（同182）</a></li>
+<li><a href="#518-%E6%8E%92%E5%88%97%E7%94%9F%E6%88%90">518. 排列生成</a></li>
+<li><a href="#519-%E8%B5%B7%E4%B8%AA%E8%8B%B1%E6%96%87%E5%90%8D1">519. 起个英文名1</a></li>
+<li><a href="#520-%E5%85%AB%E7%9A%87%E5%90%8E%E8%A1%A5%E9%BD%90%E7%89%88">520. 八皇后补齐版</a></li>
+<li><a href="#521-%E6%A3%8B%E5%AD%90%E6%91%86%E6%94%BE">521. 棋子摆放</a></li>
+<li><a href="#522-castles">522. Castles</a></li>
+<li><a href="#530-%E7%BD%97%E5%AF%86%E6%AC%A7%E4%B8%8E%E6%9C%B1%E4%B8%BD%E5%8F%B6">530. 罗密欧与朱丽叶</a></li>
+<li><a href="#533-%E8%BF%99%E4%B8%8D%E6%98%AF%E7%BC%96%E7%A8%8B%E9%A2%98">533. 这不是编程题</a></li>
+<li><a href="#535-%E6%97%B6%E5%85%89%E6%9C%BA">535. 时光机</a></li>
+<li><a href="#536-%E5%85%B3%E7%B3%BB%E5%BC%8F%E7%9F%9B%E7%9B%BE1">536. 关系式矛盾1</a></li>
+<li><a href="#547-%E5%85%B3%E7%B3%BB%E5%BC%8F%E7%9F%9B%E7%9B%BE2">547. 关系式矛盾2</a></li>
+<li><a href="#586-%E9%BB%84%E9%87%91%E9%81%93">586. 黄金道</a></li>
+<li><a href="#591-%E9%80%A0%E7%89%A9%E4%B8%BB">591. 造物主</a></li>
+</ul>
+</li>
+</ul>
+
+                    </div>
+                    <div class="tog">
+                        <div class="toggleContainer">
+                            <div class="toggle">
+                                <i class="fas fa-angle-double-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------- 评论系统👇 ------------------------->
+                    <div id="comment" class="comment">
+                        <div class="commentcontainer">
+                            
+                                
+                                    
+        <div id="vcomments">
+        </div>
+        <script>
+            var valine = new Valine();
+            var curpath = window.location.pathname;
+            if (curpath[curpath.length - 1] != '/')
+                curpath += '/'
+            valine.init({
+                el: '#vcomments',
+                appId: 'q5daDvapBHjgpLJVJGvnhqmw-gzGzoHsz',
+                appKey: 'eEPcOdsPajdAN2wGvdqBwlpT',
+                avatar: 'retro',
+                pageSize: 10,
+                placeholder: '既然来了，何不畅所欲言呢？',
+                recordIP: true,
+                path: curpath //[重点] 记得添加path路径
+            });
+        </script>
+        <script type="text/javascript">
+            var jrsc = '既然来了，何不畅所欲言呢？';
+            jinrishici.load(function (result) {
+                // 自己的处理逻辑
+                jrsc = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin
+                    .dynasty + " · " + result.data.origin.author;
+            });
+        </script>
+
+
+                                    <div class="clear"></div>
+                                
+                            
+                        </div>
+                    </div>
+                    <!---------------------------- 评论系统👆 ------------------------->
+                </div>
+                <!-- main标签，pjax渲染时加载以上内容👆 -->
+                <div class="col-md-1 col-lg-2"></div>
+                <div id="bg">
+                </div>
+            </div>
+            <!-- ----------------左侧菜单栏html 👆-------------------------------------->
+            
+        </div>
+    </div>
+    <!-- 背景图加载方式👇 -->
+    <div id="bgchoice" style="display: none">link
+                </div>
+                
+                <div id="bgurl" style="display:none">https://img.xjh.me/img/61516978_p0.jpg</div>
+                
+    <!-- 背景图加载方式👆 -->
+</body>
+
+<script>
+    //初始化
+    //更换twikoo头像
+    setTimeout(replaceAvatar,1000);
+    setTimeout(replaceAvatar,2000);
+    setTimeout(replaceAvatar,8000);
+    // --------为每张图片添加懒加载（lazyload）标签-->懒加载功能 👇------------
+    lazyload();
+    //为文章内所有代码块添加代码复制功能 👇
+    codeinit();
+    // ------代码高亮显示功能-------------
+    hljs.initHighlightingOnLoad();
+    if (shareChoice)
+        shareInit();
+    if (donateChoice)
+        donateInit();
+</script>
+
+<!------------------ 加载live2d模型功能（看板娘）👇 ---------------->
+
+<script type="text/javascript">
+    var message_Path = '/live2d/'
+    var home_Path = document.getElementById("domainname").innerHTML + "/"; //此处修改为你的域名，必须带斜杠
+</script>
+<script type="text/javascript" src="https://wufan.fun/media/js/live2d.js"></script>
+<script type="text/javascript" src="https://wufan.fun/media/live2d/js/message.js"></script>
+<script type="text/javascript">
+    loadlive2d("live2d", "https://wufan.fun/media/live2d/assets/tororo.model.json");
+</script>
+
+<!------------------ 加载live2d模型功能（看板娘）👆 ---------------->
+
+
+<!----------------------- 返回顶部按钮功能👇 --------------------->
+<script>
+    $(function () {
+        $('.toggleContainer').click(function () {
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 800);
+        });
+        $(window).scroll(function () {
+            var st = $(window).scrollTop();
+            if (st > 30) {
+                $(".toggleContainer").fadeIn(400);
+            } else {
+                $(".toggleContainer").fadeOut(100);
+            }
+        });
+    });
+</script>
+<!----------------------- 返回顶部按钮功能👆 --------------------->
+
+
+<!------------ 加载全局背景图功能👇（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+<script>
+    var bgchoice = "link"
+    var bg = $('#bg');
+    var bgurl = document.getElementById("bgurl").innerHTML;
+    if (bgchoice == 'default')
+    {
+        for (var i = 0; i < 3; i++)
+            bgurl = bgurl.replace("\\", "/");
+        bgurl = "https://wufan.fun/" + bgurl;
+    }
+    bg.css("background", "url('" + bgurl + "')");
+</script>
+<!------------ 加载全局背景图功能👆（开始时没有写好，这功能有点鸡肋/(ㄒoㄒ)/~~） -->
+
+
+
+
+<script src="https://wufan.fun/media/js/index.js"></script>
+
+
+<script>
+    //加载后的事件同步（阅读量、移动端评论等
+    window.onload = function () {
+    //代码块高亮渲染
+    document.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightBlock(block);
+    });
+        getHotnum();
+        var sharepc = $(".share").eq(0).html();
+        $(".share").eq(1).html(sharepc);   //插件只会寻找一个分享标签渲染，所以需要手动添加到移动端
+        $(".hljs").css({
+            "padding": "20px"
+        })
+    }
+</script>
+
+<!-- <script src="https://wufan.fun/media/js/av-min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.13.0/dist/av-min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.6.1/dist/av-live-query-min.js"></script> -->

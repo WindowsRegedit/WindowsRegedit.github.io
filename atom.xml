@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://wufan.fun</id>
+    <title>吴凡的个人博客</title>
+    <updated>2022-07-21T00:48:53.793Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://wufan.fun"/>
+    <link rel="self" href="https://wufan.fun/atom.xml"/>
+    <subtitle> 十步一代码，千里不BUG</subtitle>
+    <logo>https://wufan.fun/images/avatar.png</logo>
+    <icon>https://wufan.fun/favicon.ico</icon>
+    <rights>All rights reserved 2022, 吴凡的个人博客</rights>
+    <entry>
+        <title type="html"><![CDATA[我也加入爱发电了！]]></title>
+        <id>https://wufan.fun/post/wo-ye-jia-ru-ai-fa-dian-liao/</id>
+        <link href="https://wufan.fun/post/wo-ye-jia-ru-ai-fa-dian-liao/">
+        </link>
+        <updated>2022-07-21T00:43:03.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VS Code 和 Python：数据科学的天作之合]]></title>
+        <id>https://wufan.fun/post/vs-code-he-pythonshu-ju-ke-xue-de-tian-zuo-zhi-he/</id>
+        <link href="https://wufan.fun/post/vs-code-he-pythonshu-ju-ke-xue-de-tian-zuo-zhi-he/">
+        </link>
+        <updated>2022-07-18T00:02:47.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[鸿蒙3.0将删除谷歌代码，只是为让国产系统更纯粹]]></title>
+        <id>https://wufan.fun/post/hong-meng-30-jiang-shan-chu-gu-ge-dai-ma-zhi-shi-wei-rang-guo-chan-xi-tong-geng-chun-cui/</id>
+        <link href="https://wufan.fun/post/hong-meng-30-jiang-shan-chu-gu-ge-dai-ma-zhi-shi-wei-rang-guo-chan-xi-tong-geng-chun-cui/">
+        </link>
+        <updated>2022-07-17T23:59:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【历史上的今天】7 月 17 日：软银收购 ARM；第一次电子邮件中断；维基媒体国际会议]]></title>
+        <id>https://wufan.fun/post/li-shi-shang-de-jin-tian-7-yue-17-ri-ruan-yin-shou-gou-armdi-yi-ci-dian-zi-you-jian-zhong-duan-wei-ji-mei-ti-guo-ji-hui-yi/</id>
+        <link href="https://wufan.fun/post/li-shi-shang-de-jin-tian-7-yue-17-ri-ruan-yin-shou-gou-armdi-yi-ci-dian-zi-you-jian-zhong-duan-wei-ji-mei-ti-guo-ji-hui-yi/">
+        </link>
+        <updated>2022-07-17T23:55:52.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[太硬核了！GitHub爆火的开源项目，优秀 ！]]></title>
+        <id>https://wufan.fun/post/tai-ying-he-liao-github-bao-huo-de-kai-yuan-xiang-mu-you-xiu/</id>
+        <link href="https://wufan.fun/post/tai-ying-he-liao-github-bao-huo-de-kai-yuan-xiang-mu-you-xiu/">
+        </link>
+        <updated>2022-07-17T02:33:10.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[我在代码里面故意留个漏洞，违法吗？]]></title>
+        <id>https://wufan.fun/post/wo-zai-dai-ma-li-mian-gu-yi-liu-ge-lou-dong-wei-fa-ma/</id>
+        <link href="https://wufan.fun/post/wo-zai-dai-ma-li-mian-gu-yi-liu-ge-lou-dong-wei-fa-ma/">
+        </link>
+        <updated>2022-07-16T23:50:17.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【历史上的今天】7 月 10 日：iOS App Store 问世；台积电创始人出生；苹果手机越狱的起源]]></title>
+        <id>https://wufan.fun/post/li-shi-shang-de-jin-tian-7-yue-10-ri-ios-app-store-wen-shi-tai-ji-dian-chuang-shi-ren-chu-sheng-ping-guo-shou-ji-yue-yu-de-qi-yuan/</id>
+        <link href="https://wufan.fun/post/li-shi-shang-de-jin-tian-7-yue-10-ri-ios-app-store-wen-shi-tai-ji-dian-chuang-shi-ren-chu-sheng-ping-guo-shou-ji-yue-yu-de-qi-yuan/">
+        </link>
+        <updated>2022-07-11T03:16:37.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python 海象运算符，威力无穷！]]></title>
+        <id>https://wufan.fun/post/python-hai-xiang-yun-suan-fu-wei-li-wu-qiong/</id>
+        <link href="https://wufan.fun/post/python-hai-xiang-yun-suan-fu-wei-li-wu-qiong/">
+        </link>
+        <updated>2022-07-10T11:43:52.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5 分钟，教你用 Docker 部署一个 Python 应用！]]></title>
+        <id>https://wufan.fun/post/5-fen-zhong-jiao-ni-yong-docker-bu-shu-yi-ge-python-ying-yong/</id>
+        <link href="https://wufan.fun/post/5-fen-zhong-jiao-ni-yong-docker-bu-shu-yi-ge-python-ying-yong/">
+        </link>
+        <updated>2022-07-09T12:36:35.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[神器！轻松用 Python 写个 APP！]]></title>
+        <id>https://wufan.fun/post/shen-qi-qing-song-yong-python-xie-ge-app/</id>
+        <link href="https://wufan.fun/post/shen-qi-qing-song-yong-python-xie-ge-app/">
+        </link>
+        <updated>2022-07-09T12:29:08.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Docker 火了！外部网络可直接访问映射到 127.0.0.1 的服务。。。]]></title>
+        <id>https://wufan.fun/post/docker-huo-liao-wai-bu-wang-luo-ke-zhi-jie-fang-wen-ying-she-dao-127001-de-fu-wu/</id>
+        <link href="https://wufan.fun/post/docker-huo-liao-wai-bu-wang-luo-ke-zhi-jie-fang-wen-ying-she-dao-127001-de-fu-wu/">
+        </link>
+        <updated>2022-07-09T12:21:07.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[最怕同事写出这样的代码...]]></title>
+        <id>https://wufan.fun/post/zui-pa-tong-shi-xie-chu-zhe-yang-de-dai-ma/</id>
+        <link href="https://wufan.fun/post/zui-pa-tong-shi-xie-chu-zhe-yang-de-dai-ma/">
+        </link>
+        <updated>2022-07-09T01:51:10.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程1801+]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1801/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1801/">
+        </link>
+        <updated>2022-07-05T10:59:47.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[好用API分享]]></title>
+        <id>https://wufan.fun/post/hao-yong-api-fen-xiang/</id>
+        <link href="https://wufan.fun/post/hao-yong-api-fen-xiang/">
+        </link>
+        <updated>2022-07-05T09:11:44.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[还在用requests写爬虫吗？这个库效率提高一倍！]]></title>
+        <id>https://wufan.fun/post/huan-zai-yong-requests-xie-pa-chong-ma-zhe-ge-ku-xiao-lu-ti-gao-yi-bei/</id>
+        <link href="https://wufan.fun/post/huan-zai-yong-requests-xie-pa-chong-ma-zhe-ge-ku-xiao-lu-ti-gao-yi-bei/">
+        </link>
+        <updated>2022-07-04T12:08:52.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[国内怎么就做不出JetBrains那样的产品？]]></title>
+        <id>https://wufan.fun/post/guo-nei-zen-me-jiu-zuo-bu-chu-jetbrains-na-yang-de-chan-pin/</id>
+        <link href="https://wufan.fun/post/guo-nei-zen-me-jiu-zuo-bu-chu-jetbrains-na-yang-de-chan-pin/">
+        </link>
+        <updated>2022-07-04T02:56:43.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[【历史上的今天】6 月 28 日：马斯克诞生；微软推出 Office 365；蔡氏电路的发明者出生]]></title>
+        <id>https://wufan.fun/post/li-shi-shang-de-jin-tian-6-yue-28-ri-ma-si-ke-dan-sheng-wei-ruan-tui-chu-office-365cai-shi-dian-lu-de-fa-ming-zhe-chu-sheng/</id>
+        <link href="https://wufan.fun/post/li-shi-shang-de-jin-tian-6-yue-28-ri-ma-si-ke-dan-sheng-wei-ruan-tui-chu-office-365cai-shi-dian-lu-de-fa-ming-zhe-chu-sheng/">
+        </link>
+        <updated>2022-06-28T05:43:13.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Bilibili刷弹幕机器制作]]></title>
+        <id>https://wufan.fun/post/bilibili-shua-dan-mu-ji-qi-zhi-zuo/</id>
+        <link href="https://wufan.fun/post/bilibili-shua-dan-mu-ji-qi-zhi-zuo/">
+        </link>
+        <updated>2022-06-28T02:37:18.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 Dev-Sidecar + Cloudflare Workers + 自己的域名 搭建翻墙工具]]></title>
+        <id>https://wufan.fun/post/shi-yong-dev-sidecar-cloudflare-workers-zi-ji-de-yu-ming-da-jian-fan-qiang-gong-ju/</id>
+        <link href="https://wufan.fun/post/shi-yong-dev-sidecar-cloudflare-workers-zi-ji-de-yu-ming-da-jian-fan-qiang-gong-ju/">
+        </link>
+        <updated>2022-06-28T00:27:05.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员才理解的梗图]]></title>
+        <id>https://wufan.fun/post/cheng-xu-yuan-cai-li-jie-de-geng-tu/</id>
+        <link href="https://wufan.fun/post/cheng-xu-yuan-cai-li-jie-de-geng-tu/">
+        </link>
+        <updated>2022-06-27T06:18:13.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[快 45%，Python 3.11 性能表现优异]]></title>
+        <id>https://wufan.fun/post/kuai-45python-311-xing-neng-biao-xian-you-yi/</id>
+        <link href="https://wufan.fun/post/kuai-45python-311-xing-neng-biao-xian-you-yi/">
+        </link>
+        <updated>2022-06-27T03:22:41.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python的打包神器—Nuitka！]]></title>
+        <id>https://wufan.fun/post/python-de-da-bao-shen-qi-nuitka/</id>
+        <link href="https://wufan.fun/post/python-de-da-bao-shen-qi-nuitka/">
+        </link>
+        <updated>2022-06-27T00:02:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[聊天室]]></title>
+        <id>https://wufan.fun/post/liao-tian-shi/</id>
+        <link href="https://wufan.fun/post/liao-tian-shi/">
+        </link>
+        <updated>2022-06-16T00:23:43.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程1601-1800]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1601-1800/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1601-1800/">
+        </link>
+        <updated>2022-06-15T11:04:31.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程1401-1600]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1401-1600/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1401-1600/">
+        </link>
+        <updated>2022-06-15T11:03:54.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程1201-1400]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1201-1400/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1201-1400/">
+        </link>
+        <updated>2022-06-15T11:03:10.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程601-800]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-601-800/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-601-800/">
+        </link>
+        <updated>2022-06-15T10:51:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程401-600]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-401-600/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-401-600/">
+        </link>
+        <updated>2022-06-15T10:46:49.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程201-400]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-200-400/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-200-400/">
+        </link>
+        <updated>2022-06-15T10:43:44.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程1-200]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1-200/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1-200/">
+        </link>
+        <updated>2022-06-15T10:38:17.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程801-1000]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-801-1000/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-801-1000/">
+        </link>
+        <updated>2022-06-13T09:24:08.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[吴凡的题库——快快编程1001-1200]]></title>
+        <id>https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1001-1100/</id>
+        <link href="https://wufan.fun/post/wu-fan-de-ti-ku-kuai-kuai-bian-cheng-1001-1100/">
+        </link>
+        <updated>2022-06-13T09:23:55.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[使用 Python 来自动回微信]]></title>
+        <id>https://wufan.fun/post/shi-yong-python-lai-zi-dong-hui-wei-xin/</id>
+        <link href="https://wufan.fun/post/shi-yong-python-lai-zi-dong-hui-wei-xin/">
+        </link>
+        <updated>2022-06-13T09:18:55.000Z</updated>
+    </entry>
+</feed>
